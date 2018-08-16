@@ -1,0 +1,473 @@
+<!doctype html>
+
+<head>
+  <title>Mathematics</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0-beta/dist/katex.min.css" integrity="sha256-sI/DdD47R/Sa54XZDNFjRWlS+Dv8MC5xfkqQLRh0Jes=" crossorigin="anonymous">
+  <link rel="stylesheet" href="index.css">
+</head>
+
+<h1 class="title">
+  Mathematics
+</h1>
+
+<div class="content">
+
+<p><em>An experiment in merging a formal and intuitive approach to mathematics.</em></p>
+
+<p>This text is designed to be read on a computer, mobile device or e-reader, <em>not</em> on paper. References are hyperlinks, in this way no numbering is needed like when typesetting PDFs with LaTeX. Explanations intended to help develop the intuition can be toggled and hidden as to not distract the more advanced reader. In this way the terse dry formalism is combined with lengthy intuitive explanations in a way that is not possible in a physical book.</p>
+
+<div id="toc"></div>
+
+<h1>Terminology and nomenclature</h1>
+
+<p>
+  A list of important symbols etc will <em>not</em> be listed here since this can be found <a href="https://en.wikipedia.org/wiki/List_of_mathematical_symbols">elsewhere</a>. Throughout the text terms will be defined and introduced before use.
+</p>
+<p>
+  A list of important words that are used to convey technical meaning is given below.
+</p>
+<ul>
+  <li>
+    <p>
+      <strong>auto-</strong>: <em>self-</em> (Ancient Greek) <a href="https://en.wiktionary.org/wiki/auto#Etymology_1">[ref]</a>.
+      Think of “auto-matic”, meaning “self-moving”.
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>endo-</strong>: <em>within-</em> (Ancient Greek) <a href="https://en.wiktionary.org/wiki/end-#Etymology">[ref]</a>.
+      Think of “endo-thermic”, meaning “within-heating” (an endothermic process absorbs heat from its surroundings).
+    </p>
+    <p>
+      The distinction between <em>auto-</em> and <em>endo-</em> will become clear when discussing automorphisms and automorphisms.
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>homo-</strong>: <em>same</em> (Ancient Greek) <a href="https://en.wiktionary.org/wiki/homo-#Etymology_1">[ref]</a>.
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>iso-</strong>: <em>equal</em> (Ancient Greek) <a href="https://en.wiktionary.org/wiki/iso-#Etymology">[ref]</a>.
+    </p>
+    <p>
+      The distinction between <em>homo-</em> and <em>iso-</em> will become clear when discussing homomorphisms and isomorphisms.
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>-morphism</strong>: relating to <em>form</em> or <em>shape</em>.
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>mono-</strong>: <em>single-</em> or <em>unique-</em>
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>epi-</strong>: <em>on top of-</em>
+    </p>
+  </li>
+</ul>
+
+<h1>Set theory</h1>
+
+<h2>Basic concepts</h2>
+
+<div class="definition" title="Set" id="definition-set">
+  <p>
+    A <em>set</em> is a collection of <em>elements</em> such that:
+  </p>
+  <ul>
+    <li>There is no ordering of the elements.</li>
+    <li>There are no duplicate elements.</li>
+  </ul>
+  <p>
+    A set $A$ containing elements $a$, $b$ and $c$ is denoted
+    $$ A = \{a,b,c\}. $$
+  </p>
+</div>
+
+<div class="example">
+  <p>
+    Because sets are unordered and free from duplicates we have that
+    $$ \{a,b,c\} = \{c,b,b,a\}. $$
+  </p>
+</div>
+
+<p>
+  The meaning of the symbols $\in, \subset, \subseteq, \cup, \cap$ and related concepts are used in the standard sense and will not be introduced here.
+</p>
+
+<div class="definition" title="Cardinality" id="definition-cardinality">
+  <p>
+    The <em>cardinality</em> of a set $A$ is the number of elements in $A$ and is denoted $|A|$. A set with finite cardinality is said to be a finite set.
+  </p>
+</div>
+
+<div class="definition" title="Power set" id="definition-power-set">
+  <p>
+    The <em>power set</em> $\mathcal{P}(A)$ of a set $A$ is the set of all subsets of $A$.
+  </p>
+</div>
+
+
+<h2>Relations</h2>
+
+<div class="definition" title="(Binary) Relation" id="definition-relation">
+  <p>
+    Let $A$ and $B$ be sets. A <em>relation</em> on $A \times B$ is a subset of $A \times B$. Two elements $a\in A$ and $b\in B$ are said to be related by relation $R$ if $(a, b) \in R$, we write $aRb$ and read “$a$ is related to $b$ (via (relation) $R$)”.
+  </p>
+</div>
+
+<div class="definition" title="Endorelation" title="definition-endorelation">
+  <p>
+    An <em>endorelation</em> on a set $A$ is a relation on $A \times A$.
+  </p>
+</div>
+
+<div class="definition" title="Converse relation" title="definition-converse-relation">
+  <p>
+    The <em>converse relation</em> of a relation $R$ on $A \times B$ is the relation $R^T = \{(y, x) : (x, y) \in R\}$ on $B \times A$.
+    Aka. <em>transpose</em> and <em>opposite</em> relation.
+  </p>
+</div>
+
+<div class="definition" title="$n$-ary Relation" id="definition-n-ary-relation ">
+  <p>
+    Let $A_1, A_2, \ldots, A_n$ be sets. An <em>$n$-ary relation</em> on $A_1 \times A_2 \times \cdots \times A_n$ is a subset of $A_1 \times A_2 \times \cdots \times A_n$.
+  </p>
+  <p>
+    If it is not specified that a relation is binary or $n$-ary the relation is understood to be binary.
+  </p>
+</div>
+
+<div class="remark" title="Equality of relations">
+  <p>
+    Two relations $R_1$ on $A_1 \times B_1$ and $R_2$ on $A_2 \times B_2$ are considered equal if $A_1 = A_2$, $B_1 = B_2$ and $R_1 = R_2$. That is, if $A_1 \times B_1 \ne A_2 \times B_2$ the relations $R_1$ and $R_2$ are considered different even if they relate the same elements.
+  </p>
+</div>
+
+<div class="observation" title="Number of relations">
+  <p>
+    Each relation on $A \times B$ is an element of $\mathcal{P}(A \times B)$ and vice versa. For a finite set $A$ we have $|\mathcal{P}(A) = 2^{|A|}$ <a href="https://proofwiki.org/wiki/Cardinality_of_Power_Set_of_Finite_Set">[proof]</a>. Thus, assuming $A$ and $B$ to be finite, the number of relations on $A \times B$ is $|\mathcal{P}(A \times B)| = 2^{|A \times B|}$. Similarly, the number of endorelations on a set $A$ is $2^{|A^2|} = 2^{|A|^2}$.
+  </p>
+</div>
+
+<h3>Types of relations</h3>
+
+<div class="definition" title="Reflexive">
+  <p>
+    An endorelation $R$ on $A$ is <em>reflexive</em> if $(a,a) \in R$, for all $a \in A$.
+  </p>
+</div>
+
+<div class="definition" title="Symmetric">
+  <p>
+    An endorelation $R$ on $A$ is <em>symmetric</em> if $(a,b) \in R$ implies $(b,a) \in R$, for all $a,b \in A$.
+  </p>
+</div>
+
+<div class="definition" title="Transitive">
+  <p>
+    An endorelation $R$ on $A$ is <em>transitive</em> if $(a,b), (b,c) \in R$ implies $(a,c) \in R$, for all $a, b, c \in A$.
+  </p>
+</div>
+
+<div class="definition" title="Left-unique" id="definition-left-unique">
+  <p>
+    A relation $R$ on $A \times B$ is <em>left-unique</em> if $(a_1,b),(a_2,b)\in R$ implies $a_1=a_2$ for for all $a_1,a_2 \in A, b \in B$. Aka. injective.
+  </p>
+</div>
+
+<div class="definition" title="Right-unique" id="definition-right-unique">
+  <p>
+    A relation $R$ on $A \times B$ is <em>right-unique</em> if $(a,b_1),(a,b_2)\in R$ implies $b_1=b_2$ for for all $a \in A, b_1, b_2 \in B$. Aka. <em>partial function</em>.
+  </p>
+</div>
+
+<div class="definition" title="Left-total" id="definition-left-total">
+  <p>
+    A relation $R$ on $A \times B$ is <em>left-total</em> if for all $a \in A$ there exists $b \in B$ such that $(a, b) \in R$.
+  </p>
+</div>
+
+<div class="definition" title="Right-total" id="definition-right-total">
+  <p>
+    A relation $R$ on $A \times B$ is <em>right-total</em> if for all $b \in B$ there exists $a \in A$ such that $(a, b) \in R$. Aka. <em>surjective</em>.
+  </p>
+</div>
+
+
+<h2>Functions</h2>
+
+<div class="definition" title="Function" id="definition-function">
+  <p>
+    A function $f: X \to Y$ is a <a href="#definition-relation">relation</a> $\mapsto$ on $X \times Y$ that is <a href="#definition-right-unique">right-unique</a> and <a href="#definition-left-total">left-total</a>. We write $f(x) = y$ to denote $x \mapsto y$. The set $X$ is the <em>domain</em> and $Y$ is the <em>codomain</em>.
+  </p>
+</div>
+
+<p>
+  Since functions are merely a special class of relations, the concept of <a href="#definition-left-unique"><em>injective</em></a> and <a href="#definition-right-total"><em>surjective</em></a> function is directly inherited from the definitions of <a href="#definition-left-unique">injective</a> and <a href="#definition-right-total">surjective</a> for <a href="#definition-relation">relations</a>.
+</p>
+
+<div class="observation" title="Equality of functions">
+  <p>
+    As a consequence of <a href="#remark-equality-of-relations">[equality of relations]</a> we have that two functions $f_1: X_1 \to Y_1$ and $f_2: X_2 \to Y_2$ are considered equal if $X_1 = X_2$, $Y_1 = Y_2$ and $f_1(x) = f_2(x)$ for all $x \in X_1 = X_2$.
+  </p>
+</div>
+
+<div class="remark" title="Wider notions of functions">
+  <p>
+    A function is sometimes called a <em>map</em> (often with additional structure).
+    More generally a function can be seen as a <em>morphism</em>, the name being motivated by the fact that a function “changes the shape” (morphs) it's domain. The notion of morphisms is formalized in <a href="#category-theory">category theory</a>.
+  </p>
+</div>
+
+<div class="intuition" title="Functions">
+  <p>
+    A function is a thing that produces an output when given an input. For any given function and input the output is always the same. Note that one makes a distinction between a function and a functional expression: Let $f: \mathbb{R} \to \mathbb{R}$ and $g: \mathbb{Z} \to \mathbb{R}$ be functions with the functional expression $x \mapsto 2x + 1$, the functions $f$ and $g$ are formally different functions. However, $f$ restricted to $\mathbb{Z}$ is equal to g, written $f|_{\mathbb{Z}} = g$.
+  </p>
+  <div class="example">
+    <p>
+      Let $f(x) = x^2 + 1$ be a function on $ℝ$ (meaning $f : ℝ \to ℝ$). Then $f(3) = 10$.
+    </p>
+  </div>
+</div>
+
+<div class="definition" title="Bijection">
+  <p>
+    A bijection is a function that is injective and surjective.
+  </p>
+</div>
+
+<div class="definition" title="Inverse function">
+  <p>
+    A function $f: X \to Y$ has an inverse if and only if the converse relation is a function, in which case the converse relation is the inverse function $f^{-1}: Y \to X$. The existence condition is equivalent to requiring that $f$ is bijective.
+  </p>
+</div>
+
+<div class="proposition" title="Number of functions">
+  <p>
+    The number of functions from $X$ to $Y$ is $|Y|^{|X|}$ when $X$ and $Y$ are finite sets.
+  </p>
+</div>
+
+<div class="proof">
+  <p>
+    Each $x \in X$ can be mapped to $|Y|$ different elements. Thus we have $|Y|\cdot|Y|\cdots|Y|$ possible functions, where the product contains $|X$ factors, one for each element of $X$.
+  </p>
+</div>
+
+<div class="definition" title="Set of functions">
+  <p>
+    The set of all functions from $X$ to $Y$ is denoted $Y^X$. The notation is motivated by the fact that the number of functions from $X$ to $Y$ is $|Y|^{|X|}$ when $X$ and $Y$ are finite sets.
+  </p>
+</div>
+
+<div class="definition" title="Set of functions">
+  <p>
+    The set of all functions from $X$ to $Y$ is denoted $Y^X$. The notation is motivated by the fact that the number of functions from $X$ to $Y$ is $|Y|^{|X|}$ when $X$ and $Y$ are finite sets.
+  </p>
+</div>
+
+
+<h3>Operations</h3>
+
+<div class="definition" title="Binary operation">
+  <p>
+    A binary operation on a set $S$ is a function $f: S \times S \to S$.
+  </p>
+</div>
+
+<div class="remark">
+  <p>
+    Sometimes one refers only to the domain and functional expression of the operation. In this case the notion of <em>closure</em> arises: An operation is said to be closed if $f(a, b) \in S$ for all $a,b \in S$. A counterexample is given by the functional expression $(a, b) \mapsto a - b$ on the set of positive integers. This operation is not closed because subtraction of two positive integers is not necessarily a positive integer.
+  </p>
+</div>
+
+
+
+<h1>Abstract algebra</h1>
+
+<div class="remark" title="Standard abuse of notation" id="remark-standard-abuse-of-notation">
+  <p>
+    Let $X$ be a set and $s$ be some structure on $X$. A standard abuse of notation is to write $X$ to denote $(X, S)$
+  </p>
+</div>
+
+
+<h1>Calculus/Analysis</h1>
+
+<div class="definition" title="Space">
+  <p>
+    A space is a set equipped with some structure.
+  </p>
+</div>
+
+<div class="definition" title="Metric">
+  <p>
+    A <em>metric</em> (aka <em>distance function</em>) $d$ on a set $X$ is a symmetric function $d: X \times X \to \mathbb{R}$ such that for all $x, y, z \in X$ the following holds.
+  </p>
+  <ul>
+    <li>$d(x, y) = 0 \iff x = y$ (identity of indiscernibles)</li>
+    <li>$d(x, y) + d(y, z) \ge d(x, z)$ (triangle inequality or subadditivity)</li>
+  </ul>
+</div>
+
+<div class="definition" title="Metric space">
+  <p>
+    A <em>metric space</em> is a set equipped with a metric. We write $(X, d_X)$ for a metric space with underlying set $X$ and metric $d_X$.
+  </p>
+</div>
+
+<div class="example">
+  <p>
+    The real numbers $\mathbb{R}$ equipped with $d(x, y) = |x - y|$ is a metric space.
+  </p>
+</div>
+
+
+<h2>Infinite processes and limits</h2>
+
+<div class="definition" title="Sequence" id="definition-sequence">
+  <p>A sequence is one of the following.</p>
+  <ul>
+    <li>A <em>finite sequence</em> is a function defined on $\{1, 2, \ldots, n\}$ for some $n$.</li>
+    <li>An <em>infinite sequence</em> is a function defined on $\mathbb{Z}_+ = \{1, 2, \ldots\}$.</li>
+  </ul>
+  <p>If $a$ is a sequence we use the notation $a_k \coloneqq a(k)$. Similarly, we say that $(a_n)_{n=1}^\infty$ is a sequence. Note that we can shift the indices, in this way we say that also $(a_n)_\mathbb{N}$ is a sequence. If we do not care about the domain of the sequence, we simply write $(a_n)_n$.</p>
+</div>
+
+<div class="definition" title="Cauchy sequence" id="definition-cauchy-sequence">
+  <p>
+    Let $(X, d)$ be a metric space. A <em>Cauchy sequence</em> in $X$ is a sequence $(x_n)_\mathbb{N}$ such that
+    $$ \forall \epsilon > 0 \; \exists N \in \mathbb{N} : n, m > N \implies d(x_n, x_m) \lt \epsilon.$$
+  </p>
+</div>
+
+<div class="definition" title="Limit of sequence">
+  <p>
+    The limit $L$ of a sequence $(a_n)_n$ is such that
+    $$ \forall \epsilon > 0 \; \exists N \in \mathbb{N} : n > N \implies d(x_n, L) \lt \epsilon.$$
+    If a sequence has a limit, the sequence is said to be <em>convergent</em>, otherwise <em>divergent</em>.
+  </p>
+</div>
+
+<div class="definition" title="Completeness">
+  <p>
+    A metric space is <em>complete</em> if all Cauchy sequences converge to an element in the space.
+  </p>
+</div>
+
+<div class="definition" title="Limit of function">
+  <p>
+    Let $(X, d_X)$ and $(Y, d_Y)$ be metric spaces. Let $f: X \to Y$ be a function. The <em>limit</em> $L$ of $f$ as $x$ approaches $c$ is denoted by
+    $$ \lim_{x \to c} f(x) = L. $$
+    The limit satisfies
+    $$
+    \begin{gathered}
+      \forall \epsilon \gt 0 \; \exists \delta \gt 0 : \forall x \in X : \\
+      d_X(x, c) \lt \delta \implies d_Y(f(x), L) \lt \epsilon.
+    \end{gathered}
+    $$
+  </p>
+</div>
+
+<div class="remark">
+  <p>
+    The definition of a limit of a sequence is recovered from the definition of a limit of a function by choosing $X = \mathbb{N}$ and $c = \infty$.
+  </p>
+</div>
+
+<div class="definition" title="Continuous function" id="definition-continuous-function">
+  <p>
+    A function $f: X \to Y$ is continuous at a point $c$ if
+    $$ \lim_{x\to c} f(x) = f(c). $$
+    A function is said to be <em>continuous</em> if it is continuous at every point in the domain.
+  </p>
+</div>
+
+<div class="definition" title="Derivative">
+  <p>
+    The <em>derivative</em> at $c$ of a function $f: \mathbb{R} \to \mathbb{R}$ is
+    $$ f'(c) = \lim_{h\to 0} \frac{f(x+h)-f(x)}{h}. $$
+    The function is said to be <em>differentiable</em> at $c$.
+  </p>
+  <p>
+    A function that is said to be <em>differentiable</em> if it is differentiable at every point in the domain, in this case the derivative of $f$ is viewed as a function.
+  </p>
+  <p>
+    Repeatedly differentiating a function $k$ times gives rise to the $k$:th derivative, denoted $f^{(k)}$, if it exists.
+  </p>
+</div>
+
+<div class="definition" title="Continuously differentiable">
+  <p>
+    A function is <em>continuously differentiable</em> the function if differentiable and the derivative is a continuous function.
+  </p>
+</div>
+
+<div class="definition" title="Smooth function">
+  <p>
+    A function is <em>smooth</em> if it is infinitely continuously differentiable, i.e. if $f^{(k)}$ is continuously differentiable for all $k \in \mathbb{N}$.
+  </p>
+</div>
+
+<div class="definition" title="Set of differentiable functions">
+  <p>
+    The set of $k$ times continuously differentiable functions is denoted $C^k(\mathbb{R})$. The set of smooth functions is denoted $C^\infty(\mathbb{R})$.
+  </p>
+</div>
+
+
+<h1>Topology</h1>
+
+<div class="definition" title="Topology">
+  <p>
+    A <em>topology</em> $\tau$ on a set $X$ is a collection of subsets of $X$ such that:
+  </p>
+  <ul>
+    <li>$\{\}, X \in \tau$</li>
+    <li>$\{x_k\}_k \subset \tau \implies \bigcup_k x_k \in \tau$ (closed under infinite unions)</li>
+    <li>$x_1, x_2 \in \tau \implies x_1 \cap x_2 \in \tau$ (closed under finite intersections)</li>
+  </ul>
+  <p>If $\tau$ is a topology on $X$ the pair $(X, \tau)$ is a <em>topological space</em>.</p>
+  <p>A subset $A$ of $(X, \tau)$ is said to be</p>
+  <ul>
+    <li><em>open</em> if $A \in \tau$,</li>
+    <li><em>closed</em> if $A^c \in \tau$.</li>
+  </ul>
+</div>
+
+<div class="definition" title="Standard topology on $\mathbb{R}$" id="definition-standard-topology-r">
+  <p>
+    The standard topology on $\mathbb{R}$ is given by specifying that open sets are given by <a href="https://en.wikipedia.org/wiki/Topological_space#Metric_spaces">[ref]</a>
+  </p>
+</div>
+
+<div class="definition" title="Continuous function on topological spaces" id="definition-topological-continuity">
+  <p>
+    A function $f:X\to Y$ where $X$ and $Y$ are topological spaces is continuous if $f^{-1}(A)$ is open in $Y$ for all open sets $A$ of $X$.
+  </p>
+</div>
+
+<div class="theorem" title="Equivalence of definition of continuity">
+  <p>
+    If $X=Y=\mathbb{R}$ in <a href="#definition-topological-continuity">the definition for topological continuity</a> then this definition is equivalent to <a href="#definition-continuous-function">the standard definition in calculus</a>.
+  </p>
+</div>
+
+<div class="proof">
+  <p><a href="https://proofwiki.org/wiki/Equivalence_of_Definitions_of_Continuity_on_Metric_Spaces">[ref]</a></p>
+</div>
+
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/katex@0.10.0-beta/dist/katex.min.js" integrity="sha256-mxaM9VWtRj1wBtn50/EDUUe4m3t39ExE+xEPyrxVB8I=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.10.0-beta/dist/contrib/auto-render.min.js" integrity="sha384-aGfk5kvhIq5x1x5YdvCp4upKZYnA8ckafviDpmWEKp4afOZEqOli7gqSnh8I6enH" crossorigin="anonymous"></script>
+<script src="index.js"></script>
