@@ -29,6 +29,7 @@ function addToc(tocEl) {
   let tocHTML = '<ul>'
   let level = 1
   document.querySelectorAll('h1:not(.title), h2, h3, h4').forEach(el => {
+    if (el.classList.contains('ignore-toc')) return
     let elLevel = parseInt(el.tagName[1])
     while (level < elLevel) {
       tocHTML += '<ul>'

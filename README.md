@@ -1,3 +1,8 @@
-# Math E-Book
+# Math e-book
 
-Read [here](https://viktorqvarfordt.com/math/).
+Read [here](http://math.viktorqvarfordt.com/).
+
+
+## Contributing
+
+Issues and pull requests are welcome.
