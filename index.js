@@ -75,9 +75,10 @@ function enhanceBlocks() {
         expandButton =
           '<img class="toggle-button" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/OOjs_UI_icon_expand.svg/20px-OOjs_UI_icon_expand.svg.png" style="cursor: pointer; height: 16px; vertical-align:middle; margin-left: 5px;"></img>'
       }
+      const inline = el.classList.contains('inline') ? 'inline' : ''
       el.insertBefore(
         mkEl(
-          `<div class="meta">${
+          `<div class="meta ${inline}">${
             tag ? `<a id="${tag}" href="#${tag}">${text}</a>` : text
           }${expandButton}</div>`
         ),

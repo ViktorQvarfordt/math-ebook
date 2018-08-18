@@ -100,7 +100,7 @@
 
 <div class="example">
   <p>
-    Because sets are unordered and free from duplicates we have that
+    Because sets are unordered and free from duplicates, we have that
     $$ \{a,b,c\} = \{c,b,b,a\}. $$
   </p>
 </div>
@@ -120,6 +120,46 @@
     The <em>power set</em> $\mathcal{P}(A)$ of a set $A$ is the set of all subsets of $A$.
   </p>
 </div>
+
+<div class="definition" title="Set builder notation">
+  <p>
+    The <em>set builder notation</em> is a notational convenience for constructing new sets. Given a set $A$ we define the expression
+    $$\{f(a) : a \in A \}$$
+    to mean the set of elements on the form $f(a)$ for all elements $a \in A$, where $f$ is some way of constructing a new element from a given element. This notion is later formalized as a <a href="#definition-function">function</a>. The colon in the set builder notation is read <em>such that</em>. We read the above defined set as “the set of all elements on the form $f(a)$ such that $a \in A$”.
+  </p>
+  <p>
+    The set builder notation is naturally extended to multiple sets, we write
+    $$\{f(a_1, a_2, \ldots, a_n) : a_1 \in A_1, a_2 \in A_2, \ldots a_n \in A_n \}$$
+    to mean the set of elements on the form $f(a_1, a_2, \ldots, a_n)$ for all combinations of $a_1 \in A_1, a_2 \in A_2, \ldots a_n \in A_n.$
+  </p>
+</div>
+
+<div class="definition" title="Tuple">
+  <p>
+    A <em>tuple</em> (or <em>$n$-tuple</em>) is an ordered list of elements.
+  </p>
+  <p>
+    The tuple (or $3$-tuple) consisting of elements $a$, $b$ and $c$ (in this order) is denoted $(a,b,c).$
+  </p>
+</div>
+
+<div class="example">
+  <p>
+    Because tuples are ordered and may contain duplicates, we have that
+    $$(a,b,c) \ne (a,c,b) \quad\text{and}\quad (a,b,c) \ne (a,b,b,c).$$
+  </p>
+</div>
+
+<div class="definition" title="Cartesian product">
+  <p>
+    The cartesian product of two sets $A$ and $B$ is given by
+    $$A × B \coloneqq \{(a,b) : a \in A, b \in B\}.$$
+  </p>
+  <p>
+    We write $A^k$ to denote a cartesian product of $k$ copies of $A$, $A \times A \times \cdots \times A$.
+  </p>
+</div>
+
 
 
 <h2>Relations</h2>
@@ -154,7 +194,10 @@
 
 <div class="remark" title="Equality of relations">
   <p>
-    Two relations $R_1$ on $A_1 \times B_1$ and $R_2$ on $A_2 \times B_2$ are considered equal if $A_1 = A_2$, $B_1 = B_2$ and $R_1 = R_2$. That is, if $A_1 \times B_1 \ne A_2 \times B_2$ the relations $R_1$ and $R_2$ are considered different even if they relate the same elements.
+    Formally we say that a relation is a tuple $(A \times B, R)$ where $A$ and $B$ are sets and $R$ is a subset of $A \times B$. Similarly, we say that $(A, R)$ is an endorelation if $A$ is a set and $R$ is a subset of $A \times A$.
+  </p>
+  <p>
+    Two relations $(R_1, A_1 \times B_1)$ and $(R_2, A_2 \times B_2)$ are considered equal if they are equal as tuples. That is, if $A_1 = A_2$, $B_1 = B_2$ and $R_1 = R_2$.
   </p>
 </div>
 
@@ -164,49 +207,64 @@
   </p>
 </div>
 
+
+
 <h3>Types of relations</h3>
 
-<div class="definition" title="Reflexive">
+<div class="definition" title="Types of endorelations">
   <p>
-    An endorelation $R$ on $A$ is <em>reflexive</em> if $(a,a) \in R$, for all $a \in A$.
+    Let $R$ be an <a href="#definition-endorelation">endorelation</a> $A$. We then define the following.
   </p>
+
+  <div class="definition inline" title="Reflexive">
+    $\forall a \in A \, (aR a)$
+  </div>
+
+  <div class="definition inline" title="Connex">
+    $\forall a, b \in A \, (aRb \lor bRa)$. Note: Implies reflexivity.
+  </div>
+
+  <div class="definition inline" title="Symmetric">
+    $\forall a,b \in A \, (aRb \rightarrow b{R} a)$
+  </div>
+
+  <div class="definition inline" title="Asymmetric">
+    $\forall a,b \in A \, (aRb \rightarrow \lnot (bRa))$
+  </div>
+
+  <div class="definition inline" title="Antisymmetric">
+    $\forall a,b \in A \, (aRb \land bRa \to a = b)$
+  </div>
+
+  <div class="definition inline" title="Transitive">
+    $\forall a, b, c \in A \, (aRb \land bRc \to aRc)$
+  </div>
+
+  <div class="definition inline" title="Equivalence relation">
+    <a href="#definition-reflexive">reflexive</a> $\land$ <a href="#definition-symmetric">symmetric</a> $\land$ <a href="#definition-transitive">transitive</a>
+  </div>
 </div>
 
-<div class="definition" title="Symmetric">
-  <p>
-    An endorelation $R$ on $A$ is <em>symmetric</em> if $(a,b) \in R$ implies $(b,a) \in R$, for all $a,b \in A$.
-  </p>
+<p>
+  Let $R$ be a relation on $A \times B$. We then define the following.
+</p>
+
+<div class="definition inline" title="Left-unique" id="definition-left-unique">
+  $\forall a_1, a_2 \in A, b \in B \, (a_1Rb \land a_2Rb \to a_1=a_2)$ Aka. <em>injective</em>.
 </div>
 
-<div class="definition" title="Transitive">
-  <p>
-    An endorelation $R$ on $A$ is <em>transitive</em> if $(a,b), (b,c) \in R$ implies $(a,c) \in R$, for all $a, b, c \in A$.
-  </p>
+<div class="definition inline" title="Right-unique" id="definition-right-unique">
+  $a \in A, b_1, b_2 \in B \, (aRb_1 \land aRb_2 \to b_1=b_2)$ Aka. <em>partial function</em>.
 </div>
 
-<div class="definition" title="Left-unique" id="definition-left-unique">
-  <p>
-    A relation $R$ on $A \times B$ is <em>left-unique</em> if $(a_1,b),(a_2,b)\in R$ implies $a_1=a_2$ for for all $a_1,a_2 \in A, b \in B$. Aka. injective.
-  </p>
+<div class="definition inline" title="Left-total" id="definition-left-total">
+  $\forall a \in A \;\exists b \in B \, (aRb)$
 </div>
 
-<div class="definition" title="Right-unique" id="definition-right-unique">
-  <p>
-    A relation $R$ on $A \times B$ is <em>right-unique</em> if $(a,b_1),(a,b_2)\in R$ implies $b_1=b_2$ for for all $a \in A, b_1, b_2 \in B$. Aka. <em>partial function</em>.
-  </p>
+<div class="definition inline" title="Right-total" id="definition-right-total">
+  $\forall b \in B \;\exists a \in A \, (aRb)$ Aka. <em>surjective</em>.
 </div>
 
-<div class="definition" title="Left-total" id="definition-left-total">
-  <p>
-    A relation $R$ on $A \times B$ is <em>left-total</em> if for all $a \in A$ there exists $b \in B$ such that $(a, b) \in R$.
-  </p>
-</div>
-
-<div class="definition" title="Right-total" id="definition-right-total">
-  <p>
-    A relation $R$ on $A \times B$ is <em>right-total</em> if for all $b \in B$ there exists $a \in A$ such that $(a, b) \in R$. Aka. <em>surjective</em>.
-  </p>
-</div>
 
 
 <h2>Functions</h2>
@@ -282,6 +340,7 @@
 </div>
 
 
+
 <h3>Operations</h3>
 
 <div class="definition" title="Binary operation">
@@ -293,6 +352,61 @@
 <div class="remark">
   <p>
     Sometimes one refers only to the domain and functional expression of the operation. In this case the notion of <em>closure</em> arises: An operation is said to be closed if $f(a, b) \in S$ for all $a,b \in S$. A counterexample is given by the functional expression $(a, b) \mapsto a - b$ on the set of positive integers. This operation is not closed because subtraction of two positive integers is not necessarily a positive integer.
+  </p>
+</div>
+
+
+
+<h2>Sets with order</h2>
+
+<p>
+  When we constructed relations we took a set (or a pair of sets) and <em>added some structure</em> to the set, in the form of a relation on the set. This is a very common procedure; taking a set and adding some structure to construct a new mathematical object. We read $(A, S)$ as “the set $A$ is equipped with structure $S$”. This notion is explored further in <a href="#abstract-algebra">abstract algebra</a>.
+</p>
+<p>
+  Here we define some common sets with added structure.
+</p>
+
+<div class="definition" title="Proset">
+  <p>
+    A <em>proset</em> (short for <em>preordered set</em>) is a tuple $(A, \leq)$ where $A$ is a set and $\leq$ is a <em>preorder</em>; a binary relation satisfying
+  </p>
+  <ul class="inline">
+    <li>reflexivity</li>
+    <li>transitivity</li>
+  </ul>
+</div>
+
+<div class="definition" title="Poset">
+  <p>
+    A <em>poset</em> (short for <em>partially ordered set</em>) is a tuple $(A, \leq)$ where $A$ is a set and $\leq$ is a <em>partial order</em>; a binary relation satisfying
+  </p>
+  <ul class="inline">
+    <li>reflexivity</li>
+    <li>antisymmetry</li>
+    <li>transitivity</li>
+  </ul>
+</div>
+
+<div class="definition" title="Totally ordered set">
+  <p>
+    A <em>totally ordered set</em> is a tuple $(A, \lt)$ where $A$ is a set and $\lt$ is a <em>total order</em>; a binary relation satisfying
+  </p>
+  <ul class="inline">
+    <li>connex</li>
+    <li>antisymmetry</li>
+    <li>transitivity</li>
+  </ul>
+</div>
+
+<div class="remark">
+  <p>
+    The above definitions have corresponding <em>strict</em> versions, where all all relations are kept except the reflexive ones.
+  </p>
+</div>
+
+<div class="intuition" title="Ordered sets">
+  <p>
+    Todo
   </p>
 </div>
 
