@@ -84,7 +84,7 @@
 
 <h2>Basic concepts</h2>
 
-<div class="definition" title="Set" id="definition-set">
+<div class="definition" data-title="Set" data-tag="definition-set">
   <p>
     A <em>set</em> is a collection of <em>elements</em> such that:
   </p>
@@ -109,19 +109,19 @@
   The meaning of the symbols $\in, \subset, \subseteq, \cup, \cap$ and related concepts are used in the standard sense and will not be introduced here.
 </p>
 
-<div class="definition" title="Cardinality" id="definition-cardinality">
+<div class="definition" data-title="Cardinality" data-tag="definition-cardinality">
   <p>
     The <em>cardinality</em> of a set $A$ is the number of elements in $A$ and is denoted $|A|$. A set with finite cardinality is said to be a finite set.
   </p>
 </div>
 
-<div class="definition" title="Power set" id="definition-power-set">
+<div class="definition" data-title="Power set" data-tag="definition-power-set">
   <p>
     The <em>power set</em> $\mathcal{P}(A)$ of a set $A$ is the set of all subsets of $A$.
   </p>
 </div>
 
-<div class="definition" title="Set builder notation">
+<div class="definition" data-title="Set builder notation">
   <p>
     The <em>set builder notation</em> is a notational convenience for constructing new sets. Given a set $A$ we define the expression
     $$\{f(a) : a \in A \}$$
@@ -134,23 +134,23 @@
   </p>
 </div>
 
-<div class="definition" title="Tuple">
+<div class="definition" data-title="Tuple">
   <p>
     A <em>tuple</em> (or <em>$n$-tuple</em>) is an ordered list of elements.
-  </p>
-  <p>
-    The tuple (or $3$-tuple) consisting of elements $a$, $b$ and $c$ (in this order) is denoted $(a,b,c).$
   </p>
 </div>
 
 <div class="example">
+  <p>
+    The tuple (or $3$-tuple) consisting of elements $a$, $b$ and $c$ (in this order) is denoted $(a,b,c).$
+  </p>
   <p>
     Because tuples are ordered and may contain duplicates, we have that
     $$(a,b,c) \ne (a,c,b) \quad\text{and}\quad (a,b,c) \ne (a,b,b,c).$$
   </p>
 </div>
 
-<div class="definition" title="Cartesian product">
+<div class="definition" data-title="Cartesian product">
   <p>
     The cartesian product of two sets $A$ and $B$ is given by
     $$A × B \coloneqq \{(a,b) : a \in A, b \in B\}.$$
@@ -164,26 +164,26 @@
 
 <h2>Relations</h2>
 
-<div class="definition" title="(Binary) Relation" id="definition-relation">
+<div class="definition" data-title="(Binary) Relation" data-tag="definition-relation">
   <p>
-    Let $A$ and $B$ be sets. A <em>relation</em> on $A \times B$ is a subset of $A \times B$. Two elements $a\in A$ and $b\in B$ are said to be related by relation $R$ if $(a, b) \in R$, we write $aRb$ and read “$a$ is related to $b$ (via (relation) $R$)”.
+    Let $A$ and $B$ be sets. A <em>relation</em> on $A \times B$ is a tuple $(A\times B, R)$ where $R \subset A \times B$. Two elements $a\in A$ and $b\in B$ are said to be related by a relation $R$ if $(a, b) \in R$, we write $aRb$ and read “$a$ is related to $b$ (via (relation) $R$)”.
   </p>
 </div>
 
-<div class="definition" title="Endorelation" title="definition-endorelation">
+<div class="definition" data-title="Endorelation" data-title="definition-endorelation">
   <p>
-    An <em>endorelation</em> on a set $A$ is a relation on $A \times A$.
+    An <em>endorelation on a set $A$</em> is a relation on $A \times A$.
   </p>
 </div>
 
-<div class="definition" title="Converse relation" title="definition-converse-relation">
+<div class="definition" data-title="Converse relation" data-title="definition-converse-relation">
   <p>
     The <em>converse relation</em> of a relation $R$ on $A \times B$ is the relation $R^T = \{(y, x) : (x, y) \in R\}$ on $B \times A$.
     Aka. <em>transpose</em> and <em>opposite</em> relation.
   </p>
 </div>
 
-<div class="definition" title="$n$-ary Relation" id="definition-n-ary-relation ">
+<div class="definition" data-title="$n$-ary Relation" data-tag="definition-n-ary-relation ">
   <p>
     Let $A_1, A_2, \ldots, A_n$ be sets. An <em>$n$-ary relation</em> on $A_1 \times A_2 \times \cdots \times A_n$ is a subset of $A_1 \times A_2 \times \cdots \times A_n$.
   </p>
@@ -192,7 +192,7 @@
   </p>
 </div>
 
-<div class="remark" title="Equality of relations">
+<div class="remark" data-title="Equality of relations">
   <p>
     Formally we say that a relation is a tuple $(A \times B, R)$ where $A$ and $B$ are sets and $R$ is a subset of $A \times B$. Similarly, we say that $(A, R)$ is an endorelation if $A$ is a set and $R$ is a subset of $A \times A$.
   </p>
@@ -201,7 +201,7 @@
   </p>
 </div>
 
-<div class="observation" title="Number of relations">
+<div class="observation" data-title="Number of relations">
   <p>
     Each relation on $A \times B$ is an element of $\mathcal{P}(A \times B)$ and vice versa. For a finite set $A$ we have $|\mathcal{P}(A) = 2^{|A|}$ <a href="https://proofwiki.org/wiki/Cardinality_of_Power_Set_of_Finite_Set">[proof]</a>. Thus, assuming $A$ and $B$ to be finite, the number of relations on $A \times B$ is $|\mathcal{P}(A \times B)| = 2^{|A \times B|}$. Similarly, the number of endorelations on a set $A$ is $2^{|A^2|} = 2^{|A|^2}$.
   </p>
@@ -211,36 +211,36 @@
 
 <h3>Types of relations</h3>
 
-<div class="definition" title="Types of endorelations">
+<div class="definition" data-title="Types of endorelations">
   <p>
     Let $R$ be an <a href="#definition-endorelation">endorelation</a> $A$. We then define the following.
   </p>
 
-  <div class="definition inline" title="Reflexive">
+  <div class="definition inline" data-title="Reflexive">
     $\forall a \in A \, (aR a)$
   </div>
 
-  <div class="definition inline" title="Connex">
+  <div class="definition inline" data-title="Connex">
     $\forall a, b \in A \, (aRb \lor bRa)$. Note: Implies reflexivity.
   </div>
 
-  <div class="definition inline" title="Symmetric">
+  <div class="definition inline" data-title="Symmetric">
     $\forall a,b \in A \, (aRb \rightarrow b{R} a)$
   </div>
 
-  <div class="definition inline" title="Asymmetric">
+  <div class="definition inline" data-title="Asymmetric">
     $\forall a,b \in A \, (aRb \rightarrow \lnot (bRa))$
   </div>
 
-  <div class="definition inline" title="Antisymmetric">
+  <div class="definition inline" data-title="Antisymmetric">
     $\forall a,b \in A \, (aRb \land bRa \to a = b)$
   </div>
 
-  <div class="definition inline" title="Transitive">
+  <div class="definition inline" data-title="Transitive">
     $\forall a, b, c \in A \, (aRb \land bRc \to aRc)$
   </div>
 
-  <div class="definition inline" title="Equivalence relation">
+  <div class="definition inline" data-title="Equivalence relation">
     <a href="#definition-reflexive">reflexive</a> $\land$ <a href="#definition-symmetric">symmetric</a> $\land$ <a href="#definition-transitive">transitive</a>
   </div>
 </div>
@@ -249,29 +249,37 @@
   Let $R$ be a relation on $A \times B$. We then define the following.
 </p>
 
-<div class="definition inline" title="Left-unique" id="definition-left-unique">
+<div class="definition inline" data-title="Left-unique" data-tag="definition-left-unique">
   $\forall a_1, a_2 \in A, b \in B \, (a_1Rb \land a_2Rb \to a_1=a_2)$ Aka. <em>injective</em>.
 </div>
 
-<div class="definition inline" title="Right-unique" id="definition-right-unique">
+<div class="definition inline" data-title="Right-unique" data-tag="definition-right-unique">
   $a \in A, b_1, b_2 \in B \, (aRb_1 \land aRb_2 \to b_1=b_2)$ Aka. <em>partial function</em>.
 </div>
 
-<div class="definition inline" title="Left-total" id="definition-left-total">
+<div class="definition inline" data-title="Left-total" data-tag="definition-left-total">
   $\forall a \in A \;\exists b \in B \, (aRb)$
 </div>
 
-<div class="definition inline" title="Right-total" id="definition-right-total">
+<div class="definition inline" data-title="Right-total" data-tag="definition-right-total">
   $\forall b \in B \;\exists a \in A \, (aRb)$ Aka. <em>surjective</em>.
 </div>
 
 
-
 <h2>Functions</h2>
 
-<div class="definition" title="Function" id="definition-function">
+<div class="definition" data-title="Function" data-tag="definition-function">
   <p>
     A function $f: X \to Y$ is a <a href="#definition-relation">relation</a> $\mapsto$ on $X \times Y$ that is <a href="#definition-right-unique">right-unique</a> and <a href="#definition-left-total">left-total</a>. We write $f(x) = y$ to denote $x \mapsto y$. The set $X$ is the <em>domain</em> and $Y$ is the <em>codomain</em>.
+  </p>
+  <p>
+    Note that the notation $f:X\to Y$ is shorthand for saying that $(X\times Y, f)$ is a relation that is right-unique and left-total. We use the notation
+    <ul class="inline">
+      <li>$\operatorname{dom}(f) \coloneqq X$</li>
+      <li>$\operatorname{codom}(f) \coloneqq Y$</li>
+      <li>If $X' \subseteq X$ then $f(X') = \{f(x) : x \in X'\}$.</li>
+      <li>If $X = X_1 \times X_2$ and $x = (x_1, x_2) \in X$ then $f(x_1, x_2) = f(x)$$ (multivariate function).</li>
+    </ul>
   </p>
 </div>
 
@@ -279,20 +287,20 @@
   Since functions are merely a special class of relations, the concept of <a href="#definition-left-unique"><em>injective</em></a> and <a href="#definition-right-total"><em>surjective</em></a> function is directly inherited from the definitions of <a href="#definition-left-unique">injective</a> and <a href="#definition-right-total">surjective</a> for <a href="#definition-relation">relations</a>.
 </p>
 
-<div class="observation" title="Equality of functions">
+<div class="observation" data-title="Equality of functions">
   <p>
     As a consequence of <a href="#remark-equality-of-relations">[equality of relations]</a> we have that two functions $f_1: X_1 \to Y_1$ and $f_2: X_2 \to Y_2$ are considered equal if $X_1 = X_2$, $Y_1 = Y_2$ and $f_1(x) = f_2(x)$ for all $x \in X_1 = X_2$.
   </p>
 </div>
 
-<div class="remark" title="Wider notions of functions">
+<div class="remark" data-title="Wider notions of functions">
   <p>
     A function is sometimes called a <em>map</em> (often with additional structure).
-    More generally a function can be seen as a <em>morphism</em>, the name being motivated by the fact that a function “changes the shape” (morphs) it's domain. The notion of morphisms is formalized in <a href="#category-theory">category theory</a>.
+    More generally a function can be seen as a <em>morphism</em>, the name being motivated by the fact that a function “changes the shape” (morphs) it's domain. The notion of morphisms is explored further in <a href="#abstract-algebra"></a> and generalized in <a href="#category-theory">category theory</a>.
   </p>
 </div>
 
-<div class="intuition" title="Functions">
+<div class="intuition" data-title="Functions">
   <p>
     A function is a thing that produces an output when given an input. For any given function and input the output is always the same. Note that one makes a distinction between a function and a functional expression: Let $f: \mathbb{R} \to \mathbb{R}$ and $g: \mathbb{Z} \to \mathbb{R}$ be functions with the functional expression $x \mapsto 2x + 1$, the functions $f$ and $g$ are formally different functions. However, $f$ restricted to $\mathbb{Z}$ is equal to g, written $f|_{\mathbb{Z}} = g$.
   </p>
@@ -303,19 +311,19 @@
   </div>
 </div>
 
-<div class="definition" title="Bijection">
+<div class="definition" data-title="Bijection">
   <p>
     A bijection is a function that is injective and surjective.
   </p>
 </div>
 
-<div class="definition" title="Inverse function">
+<div class="definition" data-title="Inverse function">
   <p>
     A function $f: X \to Y$ has an inverse if and only if the converse relation is a function, in which case the converse relation is the inverse function $f^{-1}: Y \to X$. The existence condition is equivalent to requiring that $f$ is bijective.
   </p>
 </div>
 
-<div class="proposition" title="Number of functions">
+<div class="proposition" data-title="Number of functions">
   <p>
     The number of functions from $X$ to $Y$ is $|Y|^{|X|}$ when $X$ and $Y$ are finite sets.
   </p>
@@ -327,31 +335,15 @@
   </p>
 </div>
 
-<div class="definition" title="Set of functions">
+<div class="definition" data-title="Set of functions">
   <p>
     The set of all functions from $X$ to $Y$ is denoted $Y^X$. The notation is motivated by the fact that the number of functions from $X$ to $Y$ is $|Y|^{|X|}$ when $X$ and $Y$ are finite sets.
   </p>
 </div>
 
-<div class="definition" title="Set of functions">
+<div class="definition" data-title="Set of functions">
   <p>
     The set of all functions from $X$ to $Y$ is denoted $Y^X$. The notation is motivated by the fact that the number of functions from $X$ to $Y$ is $|Y|^{|X|}$ when $X$ and $Y$ are finite sets.
-  </p>
-</div>
-
-
-
-<h3>Operations</h3>
-
-<div class="definition" title="Binary operation">
-  <p>
-    A binary operation on a set $S$ is a function $f: S \times S \to S$.
-  </p>
-</div>
-
-<div class="remark">
-  <p>
-    Sometimes one refers only to the domain and functional expression of the operation. In this case the notion of <em>closure</em> arises: An operation is said to be closed if $f(a, b) \in S$ for all $a,b \in S$. A counterexample is given by the functional expression $(a, b) \mapsto a - b$ on the set of positive integers. This operation is not closed because subtraction of two positive integers is not necessarily a positive integer.
   </p>
 </div>
 
@@ -366,7 +358,7 @@
   Here we define some common sets with added structure.
 </p>
 
-<div class="definition" title="Proset">
+<div class="definition" data-title="Proset">
   <p>
     A <em>proset</em> (short for <em>preordered set</em>) is a tuple $(A, \leq)$ where $A$ is a set and $\leq$ is a <em>preorder</em>; a binary relation satisfying
   </p>
@@ -376,7 +368,7 @@
   </ul>
 </div>
 
-<div class="definition" title="Poset">
+<div class="definition" data-title="Poset">
   <p>
     A <em>poset</em> (short for <em>partially ordered set</em>) is a tuple $(A, \leq)$ where $A$ is a set and $\leq$ is a <em>partial order</em>; a binary relation satisfying
   </p>
@@ -387,7 +379,7 @@
   </ul>
 </div>
 
-<div class="definition" title="Totally ordered set">
+<div class="definition" data-title="Totally ordered set">
   <p>
     A <em>totally ordered set</em> is a tuple $(A, \lt)$ where $A$ is a set and $\lt$ is a <em>total order</em>; a binary relation satisfying
   </p>
@@ -400,11 +392,11 @@
 
 <div class="remark">
   <p>
-    The above definitions have corresponding <em>strict</em> versions, where all all relations are kept except the reflexive ones.
+    The above definitions have corresponding <em>strict</em> versions (<em>strict partial order</em> and <em>strict total order</em>), where all all relations are kept except the reflexive ones.
   </p>
 </div>
 
-<div class="intuition" title="Ordered sets">
+<div class="intuition" data-title="Ordered sets">
   <p>
     Todo
   </p>
@@ -412,9 +404,234 @@
 
 
 
+
+<h1>Graph theory</h1>
+
+<p><em>Reference book: Grimaldi, Discrete and combinatorial mathematics, 5th edition, Addison-Wesley. Chapters 11–13.</em></p>
+
+<div class="definition" data-title="Graph">
+  <p>
+    A <em>(undirected) graph</em> is an ordered pair $G = (V,E)$ comprising a set $V$ of <em>vertices</em> or <em>nodes</em> together with a set $E \subseteq V \times V$ of edges.
+  </p>
+</div>
+
+<div class="definition" data-title="Directed graph">
+  <p>
+    A <em>directed graph</em> is an ordered pair $G = (V,E)$ comprising a set $V$ of vertices together with a set of $E$ edges. An edge $e \in E$ is an ordered pair of two verticies.
+  </p>
+</div>
+
+<div class="intuition" data-title="Graphs">
+  <p>
+    Graphs can be used to model many types of relations.
+  </p>
+</div>
+
+
+
+
+
+
 <h1>Abstract algebra</h1>
 
-<div class="remark" title="Standard abuse of notation" id="remark-standard-abuse-of-notation">
+
+<h2>Operations</h2>
+
+<div class="definition" data-title="Binary operation" data-tag="definition-binary-operation">
+  <p>
+    A <em>binary operation</em> on a set $A$ is a function $*: A \times A \to B$ where $A \subseteq B$.
+    We use the <em>infix notation</em> $a*b$ to denote $*(a,b)$.
+  </p>
+</div>
+
+<div class="definition" data-title="Closure">
+  <p>
+    Let $* : A \times A \to B$ be a binary operation.
+  </p>
+  <ul class="inline">
+    <li>We say that $*$ is <em>closed</em> if $A = B$.</li>
+    <li>Let $A' \subseteq A$. We say that $A'$ has <em>closure</em> under $*$, or that $*$ is <em>closed</em> on $A'$, if $*(A') \subseteq A'$.</li>
+  </ul>
+</div>
+
+<div class="example">
+  <p>
+    Let $*$ be a binary operation on $\mathbb{Z}$ given by $a*b = a - b$. This operation is not closed on $\mathbb{Z}^+$ because there exists $a, b \in \mathbb{Z}^+$ such that $a - b \not\in \mathbb{Z}^+$ (for example $a = 0, b = 1$). On the other hand the binary operation $(\mathbb{Z}, +)$ can be restricted to a binary operation on $\mathbb{Z}^+$.
+  </p>
+</div>
+
+<div class="definition" data-title="Magma">
+  <p>
+    A <em>magma</em> is a a tuple $(A, *)$ where $A$ is a set and $*$ is a closed binary operation on $A$. That is, a magma is a closed binary operation $((A\times A)\times A, *)$.
+  </p>
+</div>
+
+<p>
+  Let $(A, *)$ be a binary operation. We then define the following properties of $*$.
+</p>
+
+<div class="definition" data-title="Associative">
+  <p>
+    $\forall a, b, c \in A \, (a*(b*c) = (a*b)*c)$
+  </p>
+</div>
+
+<div class="definition" data-title="Commutative">
+  <p>
+    $\forall a, b \in A \, (a*b = b*a)$
+  </p>
+</div>
+
+<div class="definition" data-title="Identity element">
+  <p>
+    An element $e \in A$ is an <em>identity element</em> if it satisfies both:
+  </p>
+  <ul class="inline">
+    <li>$\forall a \in A \, (e*a = a)$ (<em>left identity</em>)</li>
+    <li>$\forall a \in A \, (a*e = a)$ (<em>right identity</em>)</li>
+  </ul>
+</div>
+
+<div class="proposition" data-title="Uniqueness of identity">
+  <p>
+    If a binary operation has an identity element, then it is unique.
+  </p>
+  <div class="proof">
+    <p>
+      Let $(A, *)$ be a binary operation. Assume that both $e$ and $f$ are identity elements of $*$. Then,
+    </p>
+    <ol class="inline">
+      <li>$e * f = e$, because $e$ is a left identity.</li>
+      <li>$e * f = f$, because $f$ is a right identity.</li>
+      <li>Since the left hand sides of the above equations are equal, also the right hand sides must be equal, thus $e = f$.</li>
+    </ol>
+  </div>
+</div>
+
+<div class="definition" data-title="Monoid">
+  <p>
+    A <em>monoid</em> is a tuple $(A, *)$ where $A$ is a set and $*$ is a binary operation on $A$ satisfying
+  </p>
+  <ul class="inline">
+    <li>$*$ is closed</li>
+    <li>$*$ is associative</li>
+    <li>$*$ has identity</li>
+  </ul>
+</div>
+
+<div class="definition" data-title="Inverse element">
+  <p>
+    Let $(A, *)$ be a binary operation with identity element $e$. An element $a^{-1} \in A$ is an <em>inverse</em> of $a \in A$ if it satisfies both:
+  </p>
+  <ul class="inline">
+    <li>$a^{-1} * a = e$  (<em>left inverse</em>)</li>
+    <li>$a * a^{-1} = e$ (<em>right inverse</em>)</li>
+  </ul>
+</div>
+
+<div class="proposition" data-title="Uniqueness of inverse">
+  <p>
+    Let $(A, *)$ be a monoid, let $a \in A$. If $a$ has an inverse $a^{-1}$, then it is unique.
+  </p>
+  <div class="proof">
+    <p>
+      Let $(A, *)$ be a monoid. Let $a \in A$. Assume that both $a^{-1}$ and $b^{-1}$ are inverse elements of $a$. Then,
+    </p>
+    <ol class="inline">
+      <li>$e = a^{-1} * a$.</li>
+      <li>$e = b^{-1} * a$.</li>
+      <li>The above together with uniqueness of identity implies $a^{-1} * a = b^{-1} * a$.</li>
+      <li>Operating with $a^{-1}$ from right gives $(a^{-1} * a) * a^{-1} = (b^{-1} * a) * a^{-1}$.</li>
+      <li>By associativity $(a^{-1} * a) * a^{-1} = (b^{-1} * a) * a^{-1} \implies a^{-1} * (a * a^{-1}) = b^{-1} * (a * a^{-1})$.</li>
+      <li>By propery of inverse $a^{-1} * e = b^{-1} * e \implies a^{-1} = b^{-1}$.</li>
+    </ol>
+  </div>
+  <div class="remark">
+    <p>
+      The theorem does not hold if $*$ is not associative <a href="https://proofwiki.org/wiki/Inverse_not_always_Unique_for_Non-Associative_Operation">[ref]</a>.
+    </p>
+  </div>
+</div>
+
+<div class="intuition">
+  <p>
+    The operations addition and multiplication on $\mathbb{R}$ are associative. However, subtraction an division are not associative.
+  </p>
+  <div class="example" data-title="Subtraction is not associative">
+    <p>
+      Let $f : \mathbb{R} \times \mathbb{R} \to \mathbb{R}, (x, y) \mapsto x - y$. For $f$ to be associative we must have
+      $$\forall x, y, z \in \mathbb{R} \, ( f(x, f(y, z)) = f(f(x, y), z) ),$$
+      but this does not hold. As we see by letting $z \ne 0$, then
+      $$f(x, f(y, z)) = x - (y - z) = x - y + z \ne (x - y) - z = f(f(x, y), z).$$
+    </p>
+  </div>
+</div>
+
+
+<div class="definition" data-title="Group">
+  <p>
+    A <em>group</em> is a tuple $G = (S, *)$ where $S$ is a set and $*$ is a binary operation on $S$ satisfying:
+  </p>
+  <ul class="inline">
+    <li>$*$ is closed on $S$.</li>
+    <li>$*$ has identity element.</li>
+    <li>Each element of $S$ has an inverse element.</li>
+  </ul>
+  <p>
+    We say that $S$ is the <em>underlying set</em> of $G$ and write $g \in G$ to denote $g \in S$.
+  </p>
+</div>
+
+<div class="definition" data-title="Abelian">
+  <p>
+    An algebraic structure $(S, *)$ is <em>abelian</em> if $*$ is commutative.
+  </p>
+</div>
+
+<div class="definition" data-title="Distributivity">
+  <p>
+    Let $*$ and $\star$ be two binary operations on a set $A$, we say that $*$ is <em>distributive</em> over $\star$ if
+    $$\forall a, b, c \in A \, (a * (b \star c) = (a * b) \star (a * c)).$$
+  </p>
+</div>
+
+
+<div class="definition" data-title="Ring">
+  <p>
+    TODO
+  </p>
+</div>
+
+<div class="definition" data-title="Module">
+  <p>
+    TODO ...Modules are to rings what vector spaces are to fields: the same axioms... <a href="https://en.wikipedia.org/wiki/Vector_space">more here</a>
+  </p>
+</div>
+
+<div class="definition" data-title="Field">
+  <p>
+    A <em>field</em> is a 3-tuple $(F, +, \cdot)$ where $F$ is a set, $+$ (<em>addition</em>) and $\cdot$ (<em>multiplication</em>) are <a href="#definition-binary-operation">binary operations</a> on $F$ satisfying:
+  </p>
+  <ul class="inline">
+    <li>$(F, +)$ is an abelian group with $0$ as additive identity.</li>
+    <li>$(F\setminus\{0\}, \cdot)$ is an abelian group with $1$ as multiplicative identity.</li>
+    <li>Multiplication is <a href="#definition-distributivity">distributive</a> over addition.</li>
+  </ul>
+</div>
+
+<div class="definition" data-title="Vector space">
+  <p>
+    A <em>vector space</em> is a $4$-tuple $(V, F, +, \cdot)$ where $V$ is a set, $F$ is a field, $+$ (<em>vector addition</em>) is a function $V\times V \to V$ and $\cdot$ (<em>scalar multiplication</em>) is function $F \times V \to V$ satisfying:
+  </p>
+  <ul class="inline">
+    <li>$(V, +)$ is an abelian group with $0$ (the zero-vector) as identity element.</li>
+    <li>Compatibility of scalar multiplication with field multiplication: $\forall a, b \in F, v \in V \, (a \cdot (b \cdot v) = (a \cdot_F b) \cdot v)$</li>
+    <li>... TODO</li>
+  </ul>
+</div>
+
+
+<div class="remark" data-title="Standard abuse of notation" data-tag="remark-standard-abuse-of-notation">
   <p>
     Let $X$ be a set and $s$ be some structure on $X$. A standard abuse of notation is to write $X$ to denote $(X, S)$
   </p>
@@ -423,13 +640,13 @@
 
 <h1>Calculus/Analysis</h1>
 
-<div class="definition" title="Space">
+<div class="definition" data-title="Space">
   <p>
     A space is a set equipped with some structure.
   </p>
 </div>
 
-<div class="definition" title="Metric">
+<div class="definition" data-title="Metric">
   <p>
     A <em>metric</em> (aka <em>distance function</em>) $d$ on a set $X$ is a symmetric function $d: X \times X \to \mathbb{R}$ such that for all $x, y, z \in X$ the following holds.
   </p>
@@ -439,7 +656,7 @@
   </ul>
 </div>
 
-<div class="definition" title="Metric space">
+<div class="definition" data-title="Metric space">
   <p>
     A <em>metric space</em> is a set equipped with a metric. We write $(X, d_X)$ for a metric space with underlying set $X$ and metric $d_X$.
   </p>
@@ -454,7 +671,7 @@
 
 <h2>Infinite processes and limits</h2>
 
-<div class="definition" title="Sequence" id="definition-sequence">
+<div class="definition" data-title="Sequence" data-tag="definition-sequence">
   <p>A sequence is one of the following.</p>
   <ul>
     <li>A <em>finite sequence</em> is a function defined on $\{1, 2, \ldots, n\}$ for some $n$.</li>
@@ -463,14 +680,14 @@
   <p>If $a$ is a sequence we use the notation $a_k \coloneqq a(k)$. Similarly, we say that $(a_n)_{n=1}^\infty$ is a sequence. Note that we can shift the indices, in this way we say that also $(a_n)_\mathbb{N}$ is a sequence. If we do not care about the domain of the sequence, we simply write $(a_n)_n$.</p>
 </div>
 
-<div class="definition" title="Cauchy sequence" id="definition-cauchy-sequence">
+<div class="definition" data-title="Cauchy sequence" data-tag="definition-cauchy-sequence">
   <p>
     Let $(X, d)$ be a metric space. A <em>Cauchy sequence</em> in $X$ is a sequence $(x_n)_\mathbb{N}$ such that
     $$ \forall \epsilon > 0 \; \exists N \in \mathbb{N} : n, m > N \implies d(x_n, x_m) \lt \epsilon.$$
   </p>
 </div>
 
-<div class="definition" title="Limit of sequence">
+<div class="definition" data-title="Limit of sequence">
   <p>
     The limit $L$ of a sequence $(a_n)_n$ is such that
     $$ \forall \epsilon > 0 \; \exists N \in \mathbb{N} : n > N \implies d(x_n, L) \lt \epsilon.$$
@@ -478,13 +695,13 @@
   </p>
 </div>
 
-<div class="definition" title="Completeness">
+<div class="definition" data-title="Completeness">
   <p>
     A metric space is <em>complete</em> if all Cauchy sequences converge to an element in the space.
   </p>
 </div>
 
-<div class="definition" title="Limit of function">
+<div class="definition" data-title="Limit of function">
   <p>
     Let $(X, d_X)$ and $(Y, d_Y)$ be metric spaces. Let $f: X \to Y$ be a function. The <em>limit</em> $L$ of $f$ as $x$ approaches $c$ is denoted by
     $$ \lim_{x \to c} f(x) = L. $$
@@ -504,7 +721,7 @@
   </p>
 </div>
 
-<div class="definition" title="Continuous function" id="definition-continuous-function">
+<div class="definition" data-title="Continuous function" data-tag="definition-continuous-function">
   <p>
     A function $f: X \to Y$ is continuous at a point $c$ if
     $$ \lim_{x\to c} f(x) = f(c). $$
@@ -512,7 +729,7 @@
   </p>
 </div>
 
-<div class="definition" title="Derivative">
+<div class="definition" data-title="Derivative">
   <p>
     The <em>derivative</em> at $c$ of a function $f: \mathbb{R} \to \mathbb{R}$ is
     $$ f'(c) = \lim_{h\to 0} \frac{f(x+h)-f(x)}{h}. $$
@@ -526,19 +743,19 @@
   </p>
 </div>
 
-<div class="definition" title="Continuously differentiable">
+<div class="definition" data-title="Continuously differentiable">
   <p>
     A function is <em>continuously differentiable</em> the function if differentiable and the derivative is a continuous function.
   </p>
 </div>
 
-<div class="definition" title="Smooth function">
+<div class="definition" data-title="Smooth function">
   <p>
     A function is <em>smooth</em> if it is infinitely continuously differentiable, i.e. if $f^{(k)}$ is continuously differentiable for all $k \in \mathbb{N}$.
   </p>
 </div>
 
-<div class="definition" title="Set of differentiable functions">
+<div class="definition" data-title="Set of differentiable functions">
   <p>
     The set of $k$ times continuously differentiable functions is denoted $C^k(\mathbb{R})$. The set of smooth functions is denoted $C^\infty(\mathbb{R})$.
   </p>
@@ -547,7 +764,7 @@
 
 <h1>Topology</h1>
 
-<div class="definition" title="Topology">
+<div class="definition" data-title="Topology">
   <p>
     A <em>topology</em> $\tau$ on a set $X$ is a collection of subsets of $X$ such that:
   </p>
@@ -564,19 +781,19 @@
   </ul>
 </div>
 
-<div class="definition" title="Standard topology on $\mathbb{R}$" id="definition-standard-topology-r">
+<div class="definition" data-title="Standard topology on $\mathbb{R}$" data-tag="definition-standard-topology-r">
   <p>
     The standard topology on $\mathbb{R}$ is given by specifying that open sets are given by <a href="https://en.wikipedia.org/wiki/Topological_space#Metric_spaces">[ref]</a>
   </p>
 </div>
 
-<div class="definition" title="Continuous function on topological spaces" id="definition-topological-continuity">
+<div class="definition" data-title="Continuous function on topological spaces" data-tag="definition-topological-continuity">
   <p>
     A function $f:X\to Y$ where $X$ and $Y$ are topological spaces is continuous if $f^{-1}(A)$ is open in $Y$ for all open sets $A$ of $X$.
   </p>
 </div>
 
-<div class="theorem" title="Equivalence of definition of continuity">
+<div class="theorem" data-title="Equivalence of definition of continuity">
   <p>
     If $X=Y=\mathbb{R}$ in <a href="#definition-topological-continuity">the definition for topological continuity</a> then this definition is equivalent to <a href="#definition-continuous-function">the standard definition in calculus</a>.
   </p>

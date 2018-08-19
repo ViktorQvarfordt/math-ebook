@@ -46,6 +46,11 @@ function addToc(tocEl) {
 }
 
 function enhanceBlocks() {
+  const expandIcon =
+    'https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/OOjs_UI_icon_expand.svg/20px-OOjs_UI_icon_expand.svg.png'
+  const collapseIcon =
+    'https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/OOjs_UI_icon_collapse.svg/20px-OOjs_UI_icon_collapse.svg.png'
+
   for (const env of [
     'definition',
     'observation',
@@ -59,8 +64,8 @@ function enhanceBlocks() {
   ]) {
     document.querySelectorAll(`.${env}`).forEach(el => {
       el.classList.add('environment')
-      const title = el.getAttribute('title')
-      let tag = el.getAttribute('id')
+      const title = el.getAttribute('data-title')
+      let tag = el.getAttribute('data-tag')
       if (!tag && title) {
         tag = slugify(`${env}-${title}`)
       }
@@ -70,10 +75,9 @@ function enhanceBlocks() {
 
       let expandButton = ''
       if (env === 'intuition') {
-        el.classList.add('collapsed')
+        // el.classList.add('collapsed')
         el.innerHTML = `<div class="intuition-content">${el.innerHTML}</div>`
-        expandButton =
-          '<img class="toggle-button" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/OOjs_UI_icon_expand.svg/20px-OOjs_UI_icon_expand.svg.png" style="cursor: pointer; height: 16px; vertical-align:middle; margin-left: 5px;"></img>'
+        expandButton = `<img class="toggle-button" src="${collapseIcon}" style="cursor: pointer; height: 16px; vertical-align:middle; margin-left: 5px;"></img>`
       }
       const inline = el.classList.contains('inline') ? 'inline' : ''
       el.insertBefore(
@@ -92,16 +96,10 @@ function enhanceBlocks() {
       const envEl = el.parentElement.parentElement
       if (envEl.classList.contains('collapsed')) {
         envEl.classList.remove('collapsed')
-        el.setAttribute(
-          'src',
-          'https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/OOjs_UI_icon_collapse.svg/20px-OOjs_UI_icon_collapse.svg.png'
-        )
+        el.setAttribute('src', collapseIcon)
       } else {
         envEl.classList.add('collapsed')
-        el.setAttribute(
-          'src',
-          'https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/OOjs_UI_icon_expand.svg/20px-OOjs_UI_icon_expand.svg.png'
-        )
+        el.setAttribute('src', expandIcon)
       }
     })
   })
