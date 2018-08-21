@@ -24,7 +24,9 @@ h1.title {
   margin-right: auto;
 }
 
-ul, ol, li {
+ul,
+ol,
+li {
   margin-left: -7px;
 }
 
@@ -72,6 +74,7 @@ h4:hover a {
 
 .environment.inline .meta {
   display: inline;
+  margin-right: 5px;
 }
 
 .environment:not(.collapsed) .meta {
@@ -95,22 +98,27 @@ h4:hover a {
 .intuition > .meta {
   color: var(--color-intuition);
 }
+
 .intuition {
   border-color: var(--color-intuition);
 }
 
 .theorem > .meta,
-.proposition > .meta {
+.proposition > .meta,
+.observation > .meta {
   color: var(--color-theorem);
 }
+
 .theorem,
-.proposition {
+.proposition,
+.observation {
   border-color: var(--color-theorem);
 }
 
 .proof > .meta {
   color: var(--color-proof);
 }
+
 .proof {
   border-color: var(--color-proof);
 }

@@ -1,0 +1,320 @@
+<h1>Set theory</h1>
+
+<h2>Basic concepts</h2>
+
+<definition title="Set" tag="definition-set">
+  <p>
+    A <em>set</em> is a collection of <em>elements</em> such that:
+  </p>
+  <ul>
+    <li>There is no ordering of the elements.</li>
+    <li>There are no duplicate elements.</li>
+  </ul>
+  <p>
+    A set $A$ containing elements $a$, $b$ and $c$ is denoted
+    $$ A = \{a,b,c\}. $$
+  </p>
+</definition>
+
+<example>
+  <p>
+    Because sets are unordered and free from duplicates, we have that
+    $$ \{a,b,c\} = \{c,b,b,a\}. $$
+  </p>
+</example>
+
+<p>
+  The meaning of the symbols $\in, \subset, \subseteq, \cup, \cap$ and related concepts are used in the standard sense and will not be introduced here.
+</p>
+
+<definition title="Cardinality" tag="definition-cardinality">
+  <p>
+    The <em>cardinality</em> of a set $A$ is the number of elements in $A$ and is denoted $|A|$. A set with finite cardinality is said to be a finite set.
+  </p>
+</definition>
+
+<definition title="Power set" tag="definition-power-set">
+  <p>
+    The <em>power set</em> $\mathcal{P}(A)$ of a set $A$ is the set of all subsets of $A$.
+  </p>
+</definition>
+
+<definition title="Set builder notation">
+  <p>
+    The <em>set builder notation</em> is a notational convenience for constructing new sets. Given a set $A$ we define the expression
+    $$\{f(a) : a \in A \}$$
+    to mean the set of elements on the form $f(a)$ for all elements $a \in A$, where $f$ is some way of constructing a new element from a given element. This notion is later formalized as a <a href="#definition-function">function</a>. The colon in the set builder notation is read <em>such that</em>. We read the above defined set as “the set of all elements on the form $f(a)$ such that $a \in A$”.
+  </p>
+  <p>
+    The set builder notation is naturally extended to multiple sets, we write
+    $$\{f(a_1, a_2, \ldots, a_n) : a_1 \in A_1, a_2 \in A_2, \ldots a_n \in A_n \}$$
+    to mean the set of elements on the form $f(a_1, a_2, \ldots, a_n)$ for all combinations of $a_1 \in A_1, a_2 \in A_2, \ldots a_n \in A_n.$
+  </p>
+</definition>
+
+<definition title="Tuple">
+  <p>
+    A <em>tuple</em> (or <em>$n$-tuple</em>) is an ordered list of elements.
+  </p>
+</definition>
+
+<example>
+  <p>
+    The tuple (or $3$-tuple) consisting of elements $a$, $b$ and $c$ (in this order) is denoted $(a,b,c).$
+  </p>
+  <p>
+    Because tuples are ordered and may contain duplicates, we have that
+    $$(a,b,c) \ne (a,c,b) \quad\text{and}\quad (a,b,c) \ne (a,b,b,c).$$
+  </p>
+</example>
+
+<definition title="Cartesian product">
+  <p>
+    The cartesian product of two sets $A$ and $B$ is given by
+    $$A × B \coloneqq \{(a,b) : a \in A, b \in B\}.$$
+  </p>
+  <p>
+    We write $A^k$ to denote a cartesian product of $k$ copies of $A$, $A \times A \times \cdots \times A$.
+  </p>
+</definition>
+
+
+
+<h2>Relations</h2>
+
+<definition title="(Binary) Relation" tag="definition-relation">
+  <p>
+    Let $A$ and $B$ be sets. A <em>relation</em> on $A \times B$ is a tuple $(A\times B, R)$ where $R \subset A \times B$. Two elements $a\in A$ and $b\in B$ are said to be related by a relation $R$ if $(a, b) \in R$, we write $aRb$ and read “$a$ is related to $b$ (via (relation) $R$)”.
+  </p>
+</definition>
+
+<definition title="Endorelation" title="definition-endorelation">
+  <p>
+    An <em>endorelation on a set $A$</em> is a relation on $A \times A$.
+  </p>
+</definition>
+
+<definition title="Converse relation" title="definition-converse-relation">
+  <p>
+    The <em>converse relation</em> of a relation $R$ on $A \times B$ is the relation $R^T = \{(y, x) : (x, y) \in R\}$ on $B \times A$.
+    Aka. <em>transpose</em> and <em>opposite</em> relation.
+  </p>
+</definition>
+
+<definition title="$n$-ary Relation" tag="definition-n-ary-relation ">
+  <p>
+    Let $A_1, A_2, \ldots, A_n$ be sets. An <em>$n$-ary relation</em> on $A_1 \times A_2 \times \cdots \times A_n$ is a subset of $A_1 \times A_2 \times \cdots \times A_n$.
+  </p>
+  <p>
+    If it is not specified that a relation is binary or $n$-ary the relation is understood to be binary.
+  </p>
+</definition>
+
+<remark title="Equality of relations">
+  <p>
+    Formally we say that a relation is a tuple $(A \times B, R)$ where $A$ and $B$ are sets and $R$ is a subset of $A \times B$. Similarly, we say that $(A, R)$ is an endorelation if $A$ is a set and $R$ is a subset of $A \times A$.
+  </p>
+  <p>
+    Two relations $(R_1, A_1 \times B_1)$ and $(R_2, A_2 \times B_2)$ are considered equal if they are equal as tuples. That is, if $A_1 = A_2$, $B_1 = B_2$ and $R_1 = R_2$.
+  </p>
+</remark>
+
+<observation title="Number of relations">
+  <p>
+    Each relation on $A \times B$ is an element of $\mathcal{P}(A \times B)$ and vice versa. For a finite set $A$ we have $|\mathcal{P}(A) = 2^{|A|}$ <a href="https://proofwiki.org/wiki/Cardinality_of_Power_Set_of_Finite_Set">[proof]</a>. Thus, assuming $A$ and $B$ to be finite, the number of relations on $A \times B$ is $|\mathcal{P}(A \times B)| = 2^{|A \times B|}$. Similarly, the number of endorelations on a set $A$ is $2^{|A^2|} = 2^{|A|^2}$.
+  </p>
+</observation>
+
+
+
+<h3>Types of relations</h3>
+
+<definition title="Types of endorelations">
+  <p>
+    Let $R$ be an <a href="#definition-endorelation">endorelation</a> $A$. We then define the following.
+  </p>
+
+  <definition inline title="Reflexive">
+    $\forall a \in A \, (aR a)$
+  </definition>
+
+  <definition inline title="Connex">
+    $\forall a, b \in A \, (aRb \lor bRa)$. Note: Implies reflexivity.
+  </definition>
+
+  <definition inline title="Symmetric">
+    $\forall a,b \in A \, (aRb \rightarrow b{R} a)$
+  </definition>
+
+  <definition inline title="Asymmetric">
+    $\forall a,b \in A \, (aRb \rightarrow \lnot (bRa))$
+  </definition>
+
+  <definition inline title="Antisymmetric">
+    $\forall a,b \in A \, (aRb \land bRa \to a = b)$
+  </definition>
+
+  <definition inline title="Transitive">
+    $\forall a, b, c \in A \, (aRb \land bRc \to aRc)$
+  </definition>
+
+  <definition inline title="Equivalence relation">
+    <a href="#definition-reflexive">reflexive</a> $\land$ <a href="#definition-symmetric">symmetric</a> $\land$ <a href="#definition-transitive">transitive</a>
+  </definition>
+</definition>
+
+<p>
+  Let $R$ be a relation on $A \times B$. We then define the following.
+</p>
+
+<definition inline title="Left-unique" tag="definition-left-unique">
+  $\forall a_1, a_2 \in A, b \in B \, (a_1Rb \land a_2Rb \to a_1=a_2)$ Aka. <em>injective</em>.
+</definition>
+
+<definition inline title="Right-unique" tag="definition-right-unique">
+  $a \in A, b_1, b_2 \in B \, (aRb_1 \land aRb_2 \to b_1=b_2)$ Aka. <em>partial function</em>.
+</definition>
+
+<definition inline title="Left-total" tag="definition-left-total">
+  $\forall a \in A \;\exists b \in B \, (aRb)$
+</definition>
+
+<definition inline title="Right-total" tag="definition-right-total">
+  $\forall b \in B \;\exists a \in A \, (aRb)$ Aka. <em>surjective</em>.
+</definition>
+
+
+<h2>Functions</h2>
+
+<definition title="Function" tag="definition-function">
+  <p>
+    A function $f: X \to Y$ is a <a href="#definition-relation">relation</a> $\mapsto$ on $X \times Y$ that is <a href="#definition-right-unique">right-unique</a> and <a href="#definition-left-total">left-total</a>. We write $f(x) = y$ to denote $x \mapsto y$. The set $X$ is the <em>domain</em> and $Y$ is the <em>codomain</em>.
+  </p>
+  <p>
+    Note that the notation $f:X\to Y$ is shorthand for saying that $(X\times Y, f)$ is a relation that is right-unique and left-total. We use the notation
+    <ul class="inline">
+      <li>$\operatorname{dom}(f) \coloneqq X$</li>
+      <li>$\operatorname{codom}(f) \coloneqq Y$</li>
+      <li>If $X' \subseteq X$ then $f(X') = \{f(x) : x \in X'\}$.</li>
+      <li>If $X = X_1 \times X_2$ and $x = (x_1, x_2) \in X$ then $f(x_1, x_2) = f(x)$$ (multivariate function).</li>
+    </ul>
+  </p>
+</definition>
+
+<p>
+  Since functions are merely a special class of relations, the concept of <a href="#definition-left-unique"><em>injective</em></a> and <a href="#definition-right-total"><em>surjective</em></a> function is directly inherited from the definitions of <a href="#definition-left-unique">injective</a> and <a href="#definition-right-total">surjective</a> for <a href="#definition-relation">relations</a>.
+</p>
+
+<observation title="Equality of functions">
+  <p>
+    As a consequence of <a href="#remark-equality-of-relations">[equality of relations]</a> we have that two functions $f_1: X_1 \to Y_1$ and $f_2: X_2 \to Y_2$ are considered equal if $X_1 = X_2$, $Y_1 = Y_2$ and $f_1(x) = f_2(x)$ for all $x \in X_1 = X_2$.
+  </p>
+</observation>
+
+<remark title="Wider notions of functions">
+  <p>
+    A function is sometimes called a <em>map</em> (often with additional structure).
+    More generally a function can be seen as a <em>morphism</em>, the name being motivated by the fact that a function “changes the shape” (morphs) it's domain. The notion of morphisms is explored further in <a href="#abstract-algebra"></a> and generalized in <a href="#category-theory">category theory</a>.
+  </p>
+</remark>
+
+<intuition title="Functions">
+  <p>
+    A function is a thing that produces an output when given an input. For any given function and input the output is always the same. Note that one makes a distinction between a function and a functional expression: Let $f: \mathbb{R} \to \mathbb{R}$ and $g: \mathbb{Z} \to \mathbb{R}$ be functions with the functional expression $x \mapsto 2x + 1$, the functions $f$ and $g$ are formally different functions. However, $f$ restricted to $\mathbb{Z}$ is equal to g, written $f|_{\mathbb{Z}} = g$.
+  </p>
+  <example>
+    <p>
+      Let $f(x) = x^2 + 1$ be a function on $ℝ$ (meaning $f : ℝ \to ℝ$). Then $f(3) = 10$.
+    </p>
+  </example>
+</intuition>
+
+<definition title="Bijection">
+  <p>
+    A bijection is a function that is injective and surjective.
+  </p>
+</definition>
+
+<definition title="Inverse function">
+  <p>
+    A function $f: X \to Y$ has an inverse if and only if the converse relation is a function, in which case the converse relation is the inverse function $f^{-1}: Y \to X$. The existence condition is equivalent to requiring that $f$ is bijective.
+  </p>
+</definition>
+
+<observation title="Number of functions">
+  <p>
+    The number of functions from $X$ to $Y$ is $|Y|^{|X|}$ when $X$ and $Y$ are finite sets.
+  </p>
+  <proof>
+    <p>
+      Each $x \in X$ can be mapped to $|Y|$ different elements. Thus we have $|Y|\cdot|Y|\cdots|Y|$ possible functions, where the product contains $|X$ factors, one for each element of $X$.
+    </p>
+  </proof>
+</observation>
+
+<definition title="Set of functions">
+  <p>
+    The set of all functions from $X$ to $Y$ is denoted $Y^X$. The notation is motivated by the fact that the number of functions from $X$ to $Y$ is $|Y|^{|X|}$ when $X$ and $Y$ are finite sets.
+  </p>
+</definition>
+
+<definition title="Set of functions">
+  <p>
+    The set of all functions from $X$ to $Y$ is denoted $Y^X$. The notation is motivated by the fact that the number of functions from $X$ to $Y$ is $|Y|^{|X|}$ when $X$ and $Y$ are finite sets.
+  </p>
+</definition>
+
+
+
+<h2>Sets with order</h2>
+
+<p>
+  When we constructed relations we took a set (or a pair of sets) and <em>added some structure</em> to the set, in the form of a relation on the set. This is a very common procedure; taking a set and adding some structure to construct a new mathematical object. We read $(A, S)$ as “the set $A$ is equipped with structure $S$”. This notion is explored further in <a href="#abstract-algebra">abstract algebra</a>.
+</p>
+<p>
+  Here we define some common sets with added structure.
+</p>
+
+<definition title="Proset">
+  <p>
+    A <em>proset</em> (short for <em>preordered set</em>) is a tuple $(A, \leq)$ where $A$ is a set and $\leq$ is a <em>preorder</em>; a binary relation satisfying
+  </p>
+  <ul class="inline">
+    <li>reflexivity</li>
+    <li>transitivity</li>
+  </ul>
+</definition>
+
+<definition title="Poset">
+  <p>
+    A <em>poset</em> (short for <em>partially ordered set</em>) is a tuple $(A, \leq)$ where $A$ is a set and $\leq$ is a <em>partial order</em>; a binary relation satisfying
+  </p>
+  <ul class="inline">
+    <li>reflexivity</li>
+    <li>antisymmetry</li>
+    <li>transitivity</li>
+  </ul>
+</definition>
+
+<definition title="Totally ordered set">
+  <p>
+    A <em>totally ordered set</em> is a tuple $(A, \lt)$ where $A$ is a set and $\lt$ is a <em>total order</em>; a binary relation satisfying
+  </p>
+  <ul class="inline">
+    <li>connex</li>
+    <li>antisymmetry</li>
+    <li>transitivity</li>
+  </ul>
+</definition>
+
+<remark>
+  <p>
+    The above definitions have corresponding <em>strict</em> versions (<em>strict partial order</em> and <em>strict total order</em>), where all all relations are kept except the reflexive ones.
+  </p>
+</remark>
+
+<intuition title="Ordered sets">
+  <p>
+    Todo
+  </p>
+</intuition>

@@ -1,0 +1,39 @@
+<h1>Topology</h1>
+
+<definition title="Topology">
+  <p>
+    A <em>topology</em> $\tau$ on a set $X$ is a collection of subsets of $X$ such that:
+  </p>
+  <ul>
+    <li>$\{\}, X \in \tau$</li>
+    <li>$\{x_k\}_k \subset \tau \implies \bigcup_k x_k \in \tau$ (closed under infinite unions)</li>
+    <li>$x_1, x_2 \in \tau \implies x_1 \cap x_2 \in \tau$ (closed under finite intersections)</li>
+  </ul>
+  <p>If $\tau$ is a topology on $X$ the pair $(X, \tau)$ is a <em>topological space</em>.</p>
+  <p>A subset $A$ of $(X, \tau)$ is said to be</p>
+  <ul>
+    <li><em>open</em> if $A \in \tau$,</li>
+    <li><em>closed</em> if $A^c \in \tau$.</li>
+  </ul>
+</definition>
+
+<definition title="Standard topology on $\mathbb{R}$" tag="definition-standard-topology-r">
+  <p>
+    The standard topology on $\mathbb{R}$ is given by specifying that open sets are given by <a href="https://en.wikipedia.org/wiki/Topological_space#Metric_spaces">[ref]</a>
+  </p>
+</definition>
+
+<definition title="Continuous function on topological spaces" tag="definition-topological-continuity">
+  <p>
+    A function $f:X\to Y$ where $X$ and $Y$ are topological spaces is continuous if $f^{-1}(A)$ is open in $Y$ for all open sets $A$ of $X$.
+  </p>
+</definition>
+
+<theorem title="Equivalence of definition of continuity">
+  <p>
+    If $X=Y=\mathbb{R}$ in <a href="#definition-topological-continuity">the definition for topological continuity</a> then this definition is equivalent to <a href="#definition-continuous-function">the standard definition in calculus</a>.
+  </p>
+  <proof>
+    <p><a href="https://proofwiki.org/wiki/Equivalence_of_Definitions_of_Continuity_on_Metric_Spaces">[ref]</a></p>
+  </proof>
+</theorem>
