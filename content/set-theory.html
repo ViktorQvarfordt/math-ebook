@@ -11,17 +11,15 @@
     <li>There are no duplicate elements.</li>
   </ul>
   <p>
-    A set $A$ containing elements $a$, $b$ and $c$ is denoted
-    $$ A = \{a,b,c\}. $$
+    A set containing elements $a$, $b$ and $c$ is denoted $\{a,b,c\}$.
   </p>
+  <example>
+    <p>
+      Because sets are unordered and free from duplicates, we have that
+      $$\{a,b,c\} = \{c,b,b,a\} $$
+    </p>
+  </example>
 </definition>
-
-<example>
-  <p>
-    Because sets are unordered and free from duplicates, we have that
-    $$ \{a,b,c\} = \{c,b,b,a\}. $$
-  </p>
-</example>
 
 <p>
   The meaning of the symbols $\in, \subset, \subseteq, \cup, \cap$ and related concepts are used in the standard sense and will not be introduced here.
@@ -54,19 +52,19 @@
 
 <definition title="Tuple">
   <p>
-    A <em>tuple</em> (or <em>$n$-tuple</em>) is an ordered list of elements.
+    A <em>tuple</em> is an ordered list of elements. An <em>$n$-tuple</em> is a tuple of $n$ elements.
   </p>
+  <p>
+    A tuple containing elements $a$, $b$ and $c$ (in this order) is denoted $(a,b,c)$.
+  </p>
+  <example>
+    <p>
+      Because tuples are ordered and may contain duplicates, we have that
+      $$(a,b,c) \ne (a,c,b) \quad\text{and}\quad (a,b,c) \ne (a,b,b,c).$$
+    </p>
+  </example>
 </definition>
 
-<example>
-  <p>
-    The tuple (or $3$-tuple) consisting of elements $a$, $b$ and $c$ (in this order) is denoted $(a,b,c).$
-  </p>
-  <p>
-    Because tuples are ordered and may contain duplicates, we have that
-    $$(a,b,c) \ne (a,c,b) \quad\text{and}\quad (a,b,c) \ne (a,b,b,c).$$
-  </p>
-</example>
 
 <definition title="Cartesian product">
   <p>
@@ -76,6 +74,18 @@
   <p>
     We write $A^k$ to denote a cartesian product of $k$ copies of $A$, $A \times A \times \cdots \times A$.
   </p>
+  <intuition>
+    <example>
+      <p>
+        Let $A = \{a, b\}$ and $B = \{1, 2, 3\}$, then
+        $$\begin{aligned}
+          A \times B = \big\{
+            & (a, 1), (a, 2), (a, 3), \\
+            & (b, 1), (b, 2), (b, 3) \big\}.
+        \end{aligned}$$
+      </p>
+    </example>
+  </intuition>
 </definition>
 
 

@@ -29,7 +29,7 @@
           a*(b*c) &= a - (b - c) \\
           &= a - b + c \\
           &\ne (a - b) - c \\
-          &= (a*b)*c
+          &= (a*b)*c.
         \end{aligned}
         $$
       </p>
@@ -74,7 +74,7 @@
     Let $* : A \times A \to B$ be a binary operation.
   </p>
   <ul class="inline">
-    <li>We say that $*$ is <em>closed</em> if $A = B$.</li>
+    <li>We say that $*$ is <em>closed</em> if $*(A) \subseteq A$.</li>
     <li>Let $A' \subseteq A$. We say that $A'$ has <em>closure</em> under $*$, or that $*$ is <em>closed</em> on $A'$, if $*(A') \subseteq A'$.</li>
   </ul>
   <intuition>
@@ -187,7 +187,7 @@
 
 <definition title="Module">
   <p>
-    A <em>module</em> $M$ is a $4$-tuple $(A, R, +, \cdot)$ where $A$ is a set, $+$ (<em>module addition</em>) is a function $A\times A \to A$ and $\cdot$ (<em>scalar multiplication</em>) is function $R \times A \to A$ such that:
+    A <em>module</em> $M$ is a $4$-tuple $(A, R, +, \cdot)$ where $A$ is a set, $R$ is a ring, $+$ (<em>module addition</em>) is a function $A\times A \to A$ and $\cdot$ (<em>scalar multiplication</em>) is function $R \times A \to A$ such that:
   </p>
   <ol class="inline-top">
     <li>$\forall x \in X \, (1_R \cdot x = x)$ (compatibility of identity).</li>
@@ -203,7 +203,7 @@
 
 <definition title="Field">
   <p>
-    A <em>field</em> $F$ is a <a href="#definition-ring">ring</a> $(A, +, \cdot)$ such that $(A\setminus\{0\}, \cdot)$ is an abelian group.
+    A <em>field</em> $F$ is a <a href="#definition-ring">ring</a> $R = (A, +, \cdot)$ such that $(A\setminus\{0\}, \cdot)$ is an abelian group with $1_R$ as unit..
   </p>
 </definition>
 
@@ -238,3 +238,10 @@
     As an exercise, check that the this indeed is a vector space according to the abstract definition.
   </p>
 </example>
+
+
+
+
+<h2>Clifford algebra</h2>
+
+TODO

@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "browser-sync": "^2.24.6",
     "cheerio": "^1.0.0-rc.2",
     "ejs": "^2.6.1",
     "html-minifier": "^3.5.20"

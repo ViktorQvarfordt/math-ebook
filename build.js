@@ -98,9 +98,20 @@ function addIdToHeadings($) {
   })
 }
 
-function main() {
-  const partialFiles = ['index', 'set-theory', 'abstract-algebra', 'arithmetic', 'graph-theory', 'analysis', 'topology']
-  const partials = partialFiles.map(partialFile => fs.readFileSync(`${__dirname}/content/${partialFile}.html`))
+function build() {
+  const partialFiles = [
+    'index',
+    'set-theory',
+    'abstract-algebra',
+    'arithmetic',
+    'information-theory',
+    'graph-theory',
+    'analysis',
+    'topology'
+  ]
+  const partials = partialFiles.map(partialFile =>
+    fs.readFileSync(`${__dirname}/content/${partialFile}.html`)
+  )
   const $ = cheerio.load(partials.join(''))
 
   processBlocks($)
@@ -113,10 +124,14 @@ function main() {
   output = ejs.render(template, { content: output })
 
   output = minify(output, {
-    collapseWhitespace: true,
+    collapseWhitespace: true
   })
 
   fs.writeFileSync(`${__dirname}/docs/index.html`, output)
 }
 
-main()
+if (require.main === module) {
+  build()
+} {
+  module.exports = build
+}
