@@ -1,5 +1,6 @@
 const minify = require('html-minifier').minify
 const cheerio = require('cheerio')
+const katex = require('katex')
 const ejs = require('ejs')
 const fs = require('fs')
 
@@ -12,12 +13,17 @@ function slugify(str) {
 }
 
 function addToc($) {
+  const $toc = $('toc')
+  const toc = $toc.get(0)
+  if (!toc) return
+
   let tocHTML = '<ul>'
   let level = 1
   $('h1:not(.title), h2, h3, h4').each((i, el) => {
     const $el = $(el)
     if ($el.hasClass('ignore-toc')) return
     let elLevel = parseInt(el.tagName[1]) // h1, h2, ...
+
     while (level < elLevel) {
       tocHTML += '<ul>'
       level += 1
@@ -30,8 +36,6 @@ function addToc($) {
   })
   tocHTML += '</ul>'
 
-  const $toc = $('toc')
-  const toc = $toc.get(0)
   $toc.html(tocHTML).addClass(toc.tagName)
   toc.tagName = 'div'
 }
@@ -52,7 +56,7 @@ function processBlocks($) {
     $(env).each((i, el) => {
       const $el = $(el)
 
-      $el.addClass('environment')
+      $el.addClass('block')
       $el.addClass(el.tagName)
       el.tagName = 'div'
 
@@ -98,6 +102,19 @@ function addIdToHeadings($) {
   })
 }
 
+function renderKatex(html) {
+  function render(tex, displayMode) {
+    return katex.renderToString(tex, {
+      displayMode,
+      throwOnError: false
+    })
+  }
+
+  return html
+    .replace(/\$\$((?:\\\$|[^$])+)\$\$/g, (_, g1) => render(g1, true))
+    .replace(/\$((?:\\\$|[^$])+)\$/g, (_, g1) => render(g1, false))
+}
+
 function build() {
   const partialFiles = [
     'index',
@@ -109,10 +126,11 @@ function build() {
     'analysis',
     'topology'
   ]
-  const partials = partialFiles.map(partialFile =>
-    fs.readFileSync(`${__dirname}/content/${partialFile}.html`)
-  )
-  const $ = cheerio.load(partials.join(''))
+  let content = partialFiles
+    .map(partialFile => fs.readFileSync(`${__dirname}/content/${partialFile}.html`, 'utf8'))
+    .join('')
+
+  const $ = cheerio.load(content)
 
   processBlocks($)
   addIdToHeadings($)
@@ -127,11 +145,16 @@ function build() {
     collapseWhitespace: true
   })
 
+  output = renderKatex(output)
+
   fs.writeFileSync(`${__dirname}/docs/index.html`, output)
 }
 
 if (require.main === module) {
   build()
-} {
-  module.exports = build
+} else {
+  module.exports = function() {
+    console.log('building...')
+    build()
+  }
 }

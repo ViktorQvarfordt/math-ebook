@@ -1,10 +1,10 @@
-/* global renderMathInElement */
-
 function mkEl(html) {
   const template = document.createElement('template')
   template.innerHTML = html
   return template.content.firstChild
 }
+
+// TODO: The below code is outdated. Update it to allow for collapsable intution blocks.
 
 function enhanceIntuitionBlocks() {
   // const expandIcon = 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/OOjs_UI_icon_expand.svg/20px-OOjs_UI_icon_expand.svg.png'
@@ -40,16 +40,4 @@ function enhanceIntuitionBlocks() {
   // })
 }
 
-function initKaTeX() {
-  renderMathInElement(document.body, {
-    delimiters: [
-      { left: '$$', right: '$$', display: true },
-      { left: '\\[', right: '\\]', display: true },
-      { left: '$', right: '$', display: false },
-      { left: '\\(', right: '\\)', display: false }
-    ]
-  })
-}
-
 enhanceIntuitionBlocks()
-initKaTeX()
