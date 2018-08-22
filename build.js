@@ -126,17 +126,19 @@ function build() {
     'analysis',
     'topology'
   ]
-  let content = partialFiles
+  let output = partialFiles
     .map(partialFile => fs.readFileSync(`${__dirname}/content/${partialFile}.html`, 'utf8'))
     .join('')
 
-  const $ = cheerio.load(content)
+  const $ = cheerio.load(output, {
+    decodeEntities: false // Needed so that the math doesn't get mangled
+  })
 
   processBlocks($)
   addIdToHeadings($)
   addToc($)
 
-  let output = $('body').html()
+  output = $('body').html()
 
   const template = fs.readFileSync(`${__dirname}/template.html.ejs`, 'utf8')
   output = ejs.render(template, { content: output })
