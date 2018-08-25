@@ -20,6 +20,6 @@ Note that:
 2. The content of `docs/` is served via GitHub Pages.
 
 
-## Contributing
+## Markup language
 
-Suggestions, issues and pull requests are welcome.
+The markup language that is used is HTML with some trickery: I have created custom html tags and a short-hand syntax for referencing existing definitions (`[foo]` is transformed into `<a href="#definition-foo">foo</a>`). The math is typeset with KaTeX.

@@ -115,6 +115,11 @@ function renderKatex(html) {
     .replace(/\$((?:\\\$|[^$])+)\$/g, (_, g1) => render(g1, false))
 }
 
+function replaceShorthandLinks(html) {
+  return html.replace(/\[(\w[\w\s]*\w)\]/g, (_, g1) => `<a href="#definition-${slugify(g1)}">${g1}</a>`)
+}
+
+
 function build() {
   const partialFiles = [
     'index',
@@ -148,6 +153,7 @@ function build() {
   })
 
   output = renderKatex(output)
+  output = replaceShorthandLinks(output)
 
   fs.writeFileSync(`${__dirname}/docs/index.html`, output)
 }

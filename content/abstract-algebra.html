@@ -4,18 +4,15 @@
 
 <definition title="Binary operation" tag="definition-binary-operation">
   <p>
-    A <em>binary operation</em> on a set $A$ is a function $*: A \times A \to B$ where $A \subseteq B$.
+    A <em>binary operation</em> on a [set] $A$ is a [function] $*: A \times A \to B$ where $A \subseteq B$.
     We use the <em>infix notation</em> $a*b$ to denote $*(a,b)$.
   </p>
 </definition>
 
-<p>
-  Let $(A, *)$ be a binary operation. We then define the following properties of $*$.
-</p>
-
-<definition title="Associative">
+<definition title="Associative" tag="definition-associative definition-associativity">
   <p>
-    $\forall a, b, c \in A \, (a*(b*c) = (a*b)*c)$
+    A [binary operation] $*$ on a [set] $A$ is such that
+    $$\forall a, b, c \in A \, (a*(b*c) = (a*b)*c).$$
   </p>
   <intuition>
     <p>
@@ -39,7 +36,8 @@
 
 <definition title="Commutative">
   <p>
-    $\forall a, b \in A \, (a*b = b*a)$
+    A [binary operation] $*$ on a [set] $A$ is such that
+    $$\forall a, b \in A \, (a*b = b*a).$$
   </p>
 </definition>
 
@@ -138,7 +136,7 @@
 
 <definition title="Compatibility of operations">
   <p>
-    Let $*$ and $\star$ be two binary operations on a set $A$, we say that $*$ and $*$ are <em>compatible</em> if
+    Let $*$ and $\star$ be two binary operations on a set $A$, we say that $*$ and $\star$ are <em>compatible</em> if
   </p>
   <ul class="inline">
     <li>$\forall a, b, c \in A \, \big(a * (b \star c) = (a * b) \star c\big)$</li>
@@ -168,17 +166,17 @@
 
 <definition title="Abelian">
   <p>
-    An algebraic structure $(A, *)$ is <em>abelian</em> or <em>commutative</em> if $*$ is commutative.
+    An algebraic structure $(A, *)$ is <em>abelian</em> or <em>commutative</em> if $*$ is [commutative].
   </p>
 </definition>
 
 <definition title="Ring">
   <p>
-    A <em>ring</em> $R$ is a 3-tuple $(A, +, \cdot)$ where $A$ is a set and $+, \cdot$ are binary operations on $A$ such that:
+    A <em>ring</em> $R$ is a 3-tuple $(A, +, \cdot)$ where $A$ is a [set] and $+, \cdot$ are <a href="#definition-binary-operation">binary operations</a> on $A$ such that:
   </p>
   <ul class="inline">
-    <li>$(A, +)$ is an abelian group with identity $0_R$.</li>
-    <li>$(A, \cdot)$ is a monoid with identity $1_R$.</li>
+    <li>$(A, +)$ is an [abelian] [group] with [identity element] $0_R$.</li>
+    <li>$(A, \cdot)$ is a [monoid] with [identity element] $1_R$.</li>
     <li>Multiplication is <a href="#definition-distributivity">distributive</a> over addition.</li>
   </ul>
   <p>
@@ -188,12 +186,12 @@
 
 <definition title="Module">
   <p>
-    A <em>module</em> $M$ is a $4$-tuple $(A, R, +, \cdot)$ where $A$ is a set, $R$ is a ring, $+$ (<em>module addition</em>) is a function $A\times A \to A$ and $\cdot$ (<em>scalar multiplication</em>) is function $R \times A \to A$ such that:
+    A <em>module</em> $M$ is a [tuple] $(A, R, +, \cdot)$ where $A$ is a [set], $R$ is a [ring], $+$ (<em>module addition</em>) is a [function] $A\times A \to A$ and $\cdot$ (<em>scalar multiplication</em>) is [function] $R \times A \to A$ such that:
   </p>
   <ol class="inline-top">
     <li>$\forall x \in X \, (1_R \cdot x = x)$ (compatibility of identity).</li>
     <li>Scalar multiplication is <a href="#definition-compatibility-of-operations">compatible</a> with ring multiplication.</li>
-    <li>$(A, +)$ is an abelian group.</li>
+    <li>$(A, +)$ is an [abelian] [group].</li>
     <li>$\forall r \in R, x, y \in X \, \big(r \cdot (x + y) = r \cdot x + r \cdot y \big)$.</li>
     <li>$\forall r, s \in R, x \in X \, \big((r +_R s) \cdot x = r \cdot x + s \cdot x \big)$.</li>
   </ol>
@@ -204,7 +202,7 @@
 
 <definition title="Field">
   <p>
-    A <em>field</em> $F$ is a <a href="#definition-ring">ring</a> $R = (A, +, \cdot)$ such that $(A\setminus\{0\}, \cdot)$ is an abelian group with $1_R$ as unit..
+    A <em>field</em> $F$ is a [ring] $R = (A, +, \cdot)$ such that $(A\setminus\{0\}, \cdot)$ is an [abelian] [group] with $1_R$ as [identity element].
   </p>
 </definition>
 
@@ -240,7 +238,58 @@
   </p>
 </example>
 
+<definition title="Homomorphism">
+  <p>
+    A <em>homomorphism</em> between two algebraic structures is a map between the algebraic structures that preserves the structure.
+  </p>
+</definition>
 
+<definition title="Isomorphism">
+  <p>
+    An <em>isomorphism</em> is a [homomorphism] whose <a href="#definition-inverse-function">inverse</a> is a [homomorphism].
+  </p>
+</definition>
+
+<definition title="Module homomorphism">
+  <p>
+    Let $(M,R,+_M,\cdot_M)$ and $(N,R,+_N,\cdot_N)$ be <a href="#definition-module">modules</a> and let $f : M \to N$, then $f$ is a <em>module homomorphism</em> if $\forall x, y \in M, r \in R$:
+  </p>
+  <ul class="inline">
+    <li>$f(x +_M y) = f(x) +_N f(y)$</li>
+    <li>$f(r \cdot_M x) = r \cdot_N f(x)$</li>
+  </ul>
+  <p>
+    Module homomorphisms are often (in particular in linear algebra) called <em>linear functions</em>.
+  </p>
+</definition>
+
+
+
+<h2>Uncategorized</h2>
+
+<definition title="Jacobi identity">
+  <p>
+    Let $+$ be a <a href="#definition-closure">closed</a> <a href="#definition-binary-operator">binary operator</a> on a [set] $A$ with <a href="#definition-identity-element">identity element</a> $0$. Let $\times$ be a <a href="#definition-closure">closed</a> <a href="#definition-binary-operator">binary operator</a> on $A$. The <em>Jacobi identity</em> is the property of $\times$ such that
+    $$\forall a, b, c \in A \big( a \times (b \times c) + b \times (c \times a) + c \times (a \times b) = 0\big).$$
+  </p>
+  <remark>
+    <p>
+      This can be seen as a weaker form of <a href="#definition-associativity">assiciativity</a>, since if $\times$ is associative then the Jacobi identity holds.
+    </p>
+  </remark>
+</definition>
+
+<definition title="Lie algebra">
+  <p>
+    A <em>Lie algebra</em> is a tuple $(\mathfrak {g}, [\cdot, \cdot])$ where $\mathfrak {g}$ is a vector space and $[\cdot,\cdot]$ is an alternating bilinear map $\mathfrak {g}\times \mathfrak {g} \to \mathfrak {g}; (x,y) \mapsto [x,y]$ called the Lie bracket, satisfying the <a href="#definition-jacobi-identity">Jacobi identity</a>.
+  </p>
+</definition>
+
+<definition title="Lie group">
+  <p>
+    A <em>Lie group</em> is a <a href="#definition-group">group</a> $(G, m, i)$ such that $A$ is a <a href="#definition-smooth-manifold">smooth manifold</a> and group multiplication $m$ and group inversion $i$ are <a href="#definition-smooth">smooth</a>.
+  </p>
+</definition>
 
 
 <h2>Clifford algebra</h2>
