@@ -40,6 +40,17 @@ function addToc($) {
   toc.tagName = 'div'
 }
 
+function highlightBrokenLinks($) {
+  $('a').each((i, el) => {
+    const $el = $(el)
+    const href = $el.attr('href')
+    if (href[0] !== '#') return
+    if ($(`[id="${href.slice(1)}"]`).length === 0) {
+      $el.css('color', 'red')
+    }
+  })
+}
+
 function processBlocks($) {
   const envs = [
     'definition',
@@ -116,9 +127,12 @@ function renderKatex(html) {
 }
 
 function replaceShorthandLinks(html) {
-  return html.replace(/\[(\w[\w\s]*\w)\]/g, (_, g1) => `<a href="#definition-${slugify(g1)}">${g1}</a>`)
+  const bracketParenRegex = /\[(\w[\w\s]*\w)\]\((\w[\w\s]*\w)\)/g // [..](..)
+  const bracketRegex = /\[(\w[\w\s]*\w)\]/g // [..]
+  return html
+    .replace(bracketParenRegex, (_, g1, g2) => `<a href="#definition-${slugify(g2)}">${g1}</a>`)
+    .replace(bracketRegex, (_, g1) => `<a href="#definition-${slugify(g1)}">${g1}</a>`)
 }
-
 
 function build() {
   const partialFiles = [
@@ -129,19 +143,23 @@ function build() {
     'information-theory',
     'graph-theory',
     'analysis',
-    'topology'
+    'topology',
+    'differential-geometry'
   ]
   let output = partialFiles
     .map(partialFile => fs.readFileSync(`${__dirname}/content/${partialFile}.html`, 'utf8'))
     .join('')
 
+  output = replaceShorthandLinks(output)
+
   const $ = cheerio.load(output, {
-    decodeEntities: false // Needed so that the math doesn't get mangled
+    decodeEntities: false // Needed so that the math doesn't get mangled before processed by KaTeX
   })
 
   processBlocks($)
   addIdToHeadings($)
   addToc($)
+  highlightBrokenLinks($)
 
   output = $('body').html()
 
@@ -153,16 +171,19 @@ function build() {
   })
 
   output = renderKatex(output)
-  output = replaceShorthandLinks(output)
 
   fs.writeFileSync(`${__dirname}/docs/index.html`, output)
 }
 
-if (require.main === module) {
+function buildWrapper() {
+  const t0 = Date.now()
   build()
+  const t1 = Date.now()
+  console.log(`Project built in ${(t1 - t0) / 1000} seconds`)
+}
+
+if (require.main === module) {
+  buildWrapper()
 } else {
-  module.exports = function() {
-    console.log('building...')
-    build()
-  }
+  module.exports = buildWrapper
 }
