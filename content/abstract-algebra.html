@@ -82,6 +82,17 @@
   </intuition>
 </definition>
 
+<definition title="Algebraic structure">
+  <p>
+    An <strong>algebraic structure</strong> is a tuple $(A_1, \ldots, A_n, *_1, \ldots, *_m)$ where $A_1, \ldots, A_n$ are [sets](set) and $*_1, \ldots, *_m$ are [binary operations](binary operation).
+  </p>
+  <remark title="Standard abuse of notation">
+    <p>
+      If $S = (A_1, \ldots, A_n, *_1, \ldots, *_m)$ is an algebraic structure, then we write $x \in S$ to denote $x \in A_1$.
+    </p>
+  </remark>
+</definition>
+
 <definition title="Magma">
   <p>
     A <em>magma</em> is a a tuple $(A, *)$ where $A$ is a set and $*$ is a closed binary operation on $A$.
@@ -123,18 +134,31 @@
   </proof>
   <remark>
     <p>
-      The theorem does not hold if $*$ is not associative <a href="https://proofwiki.org/wiki/Inverse_not_always_Unique_for_Non-Associative_Operation">[ref]</a>.
+      The theorem does not hold if $*$ is not associative [<a href="https://proofwiki.org/wiki/Inverse_not_always_Unique_for_Non-Associative_Operation">proof</a>].
     </p>
   </remark>
 </proposition>
 
 <definition title="Group">
   <p>
-    A <em>group</em> is a monoid $(A, *)$ such that each element of $A$ has an inverse element under $*$.
+    A <strong>group</strong> is a [monoid] $(G, *)$ such that each element of $G$ has an [inverse element] under $*$, denoted $-x$ (<em>additive notation</em>) or $x^{-1}$ (<em>multiplicative notation</em>).
+  <p>
+    An alternative notation for a group $(G, *)$ is $(G, m, i)$ where $m$ is the <em>multiplication function</em> and $i$ is the <em>inverse element function</em>, given by:
+  </p>
+  <ul class="inline">
+    <li>$m : G \times G \to G; \; (x, y) \mapsto x * y$</li>
+    <li>$i : G \to G; \; x \mapsto x^{-1}$</li>
+  </ul>
+</definition>
+
+<definition title="Anticommutative">
+  <p>
+    Let $(G, *)$ be a [group], then $*$ is <strong>anticommutative</strong> if
+    $$\forall x, y \in G \, \big( x * y = - (y * x) \big)$$
   </p>
 </definition>
 
-<definition title="Compatibility of operations">
+<definition title="Compatibility of operations" tag="definition-compatibility-of-operations definition-compatible-operations">
   <p>
     Let $*$ and $\star$ be two binary operations on a set $A$, we say that $*$ and $\star$ are <em>compatible</em> if
   </p>
@@ -145,18 +169,18 @@
 
 <definition title="Monoid action">
   <p>
-    Let $(A, *)$ be a <a href="#definition-monoid">monoid</a> with identity $e$ and let $X$ be a set. A (left) <em>monoid action</em> of $(A, *)$ on $X$ is a function $\star : A \times X \to X$ such that
+    Let $(A, *)$ be a <a href="#definition-monoid">monoid</a> with identity $e$ and let $X$ be a set. A (left) <strong>monoid action</strong> of $(A, *)$ on $X$ is a function $\star : A \times X \to X$ such that
   </p>
   <ul class="inline">
     <li>$\forall x \in X \, (e \star x = x)$ (compatibility of identity).</li>
-    <li>$*$ and $\star$ are <a href="#definition-compatible">compatible</a>.</li>
+    <li>$*$ and $\star$ are [compatible](compatible operations).</li>
   </ul>
   <p>Let $G$ be a group, then a group action of $G$ on $X$ is a monoid action of $G$ on $X$. (This makes sense because a group is a monoid).</p>
 </definition>
 
 <definition title="Distributivity">
   <p>
-    Let $*$ and $\star$ be two binary operations on a set $A$, we say that $*$ is <em>distributive</em> over $\star$ if both
+    Let $*$ and $\star$ be two binary operations on a set $A$, we say that $*$ is <strong>distributive</strong> over $\star$ if both
   </p>
   <ul class="inline">
     <li>$\forall a, b, c \in A \, \big(a * (b \star c) = (a * b) \star (a * c)\big)$ (left distributive)</li>
@@ -166,22 +190,19 @@
 
 <definition title="Abelian">
   <p>
-    An algebraic structure $(A, *)$ is <em>abelian</em> or <em>commutative</em> if $*$ is [commutative].
+    An algebraic structure $(A, *)$ is <strong>abelian</strong> or <strong>commutative</strong> if $*$ is [commutative].
   </p>
 </definition>
 
 <definition title="Ring">
   <p>
-    A <em>ring</em> $R$ is a 3-tuple $(A, +, \cdot)$ where $A$ is a [set] and $+, \cdot$ are <a href="#definition-binary-operation">binary operations</a> on $A$ such that:
+    A <strong>ring</strong> $R$ is a 3-tuple $(A, +, \cdot)$ where $A$ is a [set] and $+, \cdot$ are <a href="#definition-binary-operation">binary operations</a> on $A$ such that:
   </p>
   <ul class="inline">
     <li>$(A, +)$ is an [abelian] [group] with [identity element] $0_R$.</li>
-    <li>$(A, \cdot)$ is a [monoid] with [identity element] $1_R$.</li>
+    <li>$(A, \cdot)$ is a [monoid] with identity element $1_R$.</li>
     <li>Multiplication is <a href="#definition-distributivity">distributive</a> over addition.</li>
   </ul>
-  <p>
-    We say that $A$ is the <em>underlying set</em> of $R$ and write $a \in G$ to denote $a \in A$.
-  </p>
 </definition>
 
 <definition title="Module">
@@ -250,7 +271,7 @@
   </p>
 </definition>
 
-<definition title="Module homomorphism">
+<definition title="Module homomorphism" tag="definition-module-homomorphism definition-linear-function">
   <p>
     Let $(M,R,+_M,\cdot_M)$ and $(N,R,+_N,\cdot_N)$ be <a href="#definition-module">modules</a> and let $f : M \to N$, then $f$ is a <em>module homomorphism</em> if $\forall x, y \in M, r \in R$:
   </p>
@@ -263,33 +284,61 @@
   </p>
 </definition>
 
+<definition title="Multilinear" tag="definition-multilinear definition-bilinear definition-multilinear-form definition-bilinear-form">
+  <p>
+    Let $(M_k,R,+_{M_k},\cdot_{M_k}), 1 \le k \le n$ and $(N,R,+_N,\cdot_N)$ be [modules](module) and let $f : \prod_{k=1}^n M_k \to N$, then $f$ is a <em>multilinear function</em> if $f$ restricted to $M_k$ is a [module homomorphism] for $1 \le k \le n$.
+  </p>
+  <p>
+    If $f$ is multilinear with $n = 2$ we say that $f$ is <strong>bilinear</strong>.
+  </p>
+  <p>
+    If $f$ is multilinear with $M_j = M_k$ for all $i \le j, k \le n$ we say that $f$ is a <strong>multilinear form</strong>.
+  </p>
+</definition>
+
+<definition title="Alternating">
+  <p>
+    Let $f : M^n \to N$ be a [multilinear form], then $f$ is <strong>alternating</strong> if it satisfies
+    $$\forall x_1, \ldots, x_n \in M,\, \forall j \ne k \; \big( f(x_1, \ldots, x_j, \ldots, x_k, \ldots, x_n) = - f(x_1, \ldots, x_k, \ldots, x_j, \ldots, x_n \big).$$
+    It follows that if $x_j = x_k$ for $j \ne k$ then $f(x_1, \ldots, x_j, \ldots, x_k, \ldots, x_n) = 0$.
+  </p>
+</definition>
 
 
-<h2>Uncategorized</h2>
+
+<h2>Lie algebra</h2>
+
+<intuition>
+  <p>
+    TODO
+  </p>
+</intuition>
 
 <definition title="Jacobi identity">
   <p>
-    Let $+$ be a <a href="#definition-closure">closed</a> <a href="#definition-binary-operator">binary operator</a> on a [set] $A$ with <a href="#definition-identity-element">identity element</a> $0$. Let $\times$ be a <a href="#definition-closure">closed</a> <a href="#definition-binary-operator">binary operator</a> on $A$. The <em>Jacobi identity</em> is the property of $\times$ such that
+    Let $+$ be a [closed](closure) [binary operation] on a [set] $A$ with [identity element] $0$. Let $\times$ be a <a href="#definition-closure">closed</a> [binary operation] on $A$. The <strong>Jacobi identity</strong> is the property of $\times$ such that
     $$\forall a, b, c \in A \big( a \times (b \times c) + b \times (c \times a) + c \times (a \times b) = 0\big).$$
   </p>
   <remark>
     <p>
-      This can be seen as a weaker form of <a href="#definition-associativity">assiciativity</a>, since if $\times$ is associative then the Jacobi identity holds.
+      This can be seen as a weaker form of [associativity], since if $\times$ is associative then the Jacobi identity holds.
     </p>
   </remark>
 </definition>
 
 <definition title="Lie algebra">
   <p>
-    A <em>Lie algebra</em> is a tuple $(\mathfrak {g}, [\cdot, \cdot])$ where $\mathfrak {g}$ is a vector space and $[\cdot,\cdot]$ is an alternating bilinear map $\mathfrak {g}\times \mathfrak {g} \to \mathfrak {g}; (x,y) \mapsto [x,y]$ called the Lie bracket, satisfying the <a href="#definition-jacobi-identity">Jacobi identity</a>.
+    A <strong>Lie algebra</strong> is a [vector space] $\mathfrak {g}$ equipped with an [alternating] [bilinear] [function] $\mathfrak {g}\times \mathfrak {g} \to \mathfrak {g}; (x,y) \mapsto [x,y]$ called the Lie bracket that satisfies the [Jacobi identity].
   </p>
 </definition>
 
 <definition title="Lie group">
   <p>
-    A <em>Lie group</em> is a <a href="#definition-group">group</a> $(G, m, i)$ such that $A$ is a <a href="#definition-smooth-manifold">smooth manifold</a> and group multiplication $m$ and group inversion $i$ are <a href="#definition-smooth">smooth</a>.
+    A <strong>Lie group</strong> is a <a href="#definition-group">group</a> $(G, m, i)$ such that $G$ is a [smooth manifold] and group multiplication $m$ and group inversion $i$ are [smooth functions](smooth function).
   </p>
 </definition>
+
+
 
 
 <h2>Clifford algebra</h2>

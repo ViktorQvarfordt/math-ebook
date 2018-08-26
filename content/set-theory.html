@@ -124,18 +124,18 @@
   </p>
 </definition>
 
-<remark title="Equality of relations">
+<definition title="Equality of relations">
   <p>
     Formally we say that a relation is a tuple $(A \times B, R)$ where $A$ and $B$ are sets and $R$ is a subset of $A \times B$. Similarly, we say that $(A, R)$ is an endorelation if $A$ is a set and $R$ is a subset of $A \times A$.
   </p>
   <p>
     Two relations $(R_1, A_1 \times B_1)$ and $(R_2, A_2 \times B_2)$ are considered equal if they are equal as tuples. That is, if $A_1 = A_2$, $B_1 = B_2$ and $R_1 = R_2$.
   </p>
-</remark>
+</definition>
 
 <observation title="Number of relations">
   <p>
-    Each relation on $A \times B$ is an element of $\mathcal{P}(A \times B)$ and vice versa. For a finite set $A$ we have $|\mathcal{P}(A) = 2^{|A|}$ <a href="https://proofwiki.org/wiki/Cardinality_of_Power_Set_of_Finite_Set">[proof]</a>. Thus, assuming $A$ and $B$ to be finite, the number of relations on $A \times B$ is $|\mathcal{P}(A \times B)| = 2^{|A \times B|}$. Similarly, the number of endorelations on a set $A$ is $2^{|A^2|} = 2^{|A|^2}$.
+    Each relation on $A \times B$ is an element of $\mathcal{P}(A \times B)$ and vice versa. For a finite set $A$ we have $|\mathcal{P}(A) = 2^{|A|}$ [<a href="https://proofwiki.org/wiki/Cardinality_of_Power_Set_of_Finite_Set">proof</a>]. Thus, assuming $A$ and $B$ to be finite, the number of relations on $A \times B$ is $|\mathcal{P}(A \times B)| = 2^{|A \times B|}$. Similarly, the number of endorelations on a set $A$ is $2^{|A^2|} = 2^{|A|^2}$.
   </p>
 </observation>
 
@@ -177,24 +177,26 @@
   </definition>
 </definition>
 
-<p>
-  Let $R$ be a relation on $A \times B$. We then define the following.
-</p>
+<definition title="Types of endorelations">
+    <p>
+      Let $R$ be a [relation] on $A \times B$. We then define the following.
+    </p>
 
-<definition inline title="Left-unique" tag="definition-left-unique">
-  $\forall a_1, a_2 \in A, b \in B \, (a_1Rb \land a_2Rb \to a_1=a_2)$ Aka. <em>injective</em>.
-</definition>
+  <definition inline title="Left-unique" tag="definition-left-unique">
+    $\forall a_1, a_2 \in A, b \in B \, (a_1Rb \land a_2Rb \to a_1=a_2)$ Aka. <em>injective</em>.
+  </definition>
 
-<definition inline title="Right-unique" tag="definition-right-unique">
-  $a \in A, b_1, b_2 \in B \, (aRb_1 \land aRb_2 \to b_1=b_2)$ Aka. <em>partial function</em>.
-</definition>
+  <definition inline title="Right-unique" tag="definition-right-unique">
+    $a \in A, b_1, b_2 \in B \, (aRb_1 \land aRb_2 \to b_1=b_2)$ Aka. <em>partial function</em>.
+  </definition>
 
-<definition inline title="Left-total" tag="definition-left-total">
-  $\forall a \in A \;\exists b \in B \, (aRb)$
-</definition>
+  <definition inline title="Left-total" tag="definition-left-total">
+    $\forall a \in A \;\exists b \in B \, (aRb)$
+  </definition>
 
-<definition inline title="Right-total" tag="definition-right-total">
-  $\forall b \in B \;\exists a \in A \, (aRb)$ Aka. <em>surjective</em>.
+  <definition inline title="Right-total" tag="definition-right-total">
+    $\forall b \in B \;\exists a \in A \, (aRb)$ Aka. <em>surjective</em>.
+  </definition>
 </definition>
 
 
@@ -224,6 +226,12 @@
     As a consequence of <a href="#remark-equality-of-relations">[equality of relations]</a> we have that two functions $f_1: X_1 \to Y_1$ and $f_2: X_2 \to Y_2$ are considered equal if $X_1 = X_2$, $Y_1 = Y_2$ and $f_1(x) = f_2(x)$ for all $x \in X_1 = X_2$.
   </p>
 </observation>
+
+<definition title="Restricted function">
+  <p>
+    Let $f : A \to B$ and let $A' \subseteq A$, then <em>$f$ restricted to $A'$</em> is the function $ $f|_{A'}$ : A' \to B; a \mapsto f(a)$.
+  </p>
+</definition>
 
 <remark title="Wider notions of functions">
   <p>
