@@ -4,6 +4,7 @@
     "cheerio": "^1.0.0-rc.2",
     "ejs": "^2.6.1",
     "html-minifier": "^3.5.20",
-    "katex": "^0.10.0-rc"
+    "katex": "^0.10.0-rc",
+    "prismjs": "^1.15.0"
   }
 }

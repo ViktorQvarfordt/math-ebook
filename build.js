@@ -1,15 +1,19 @@
 const minify = require('html-minifier').minify
 const cheerio = require('cheerio')
+const Prism = require('prismjs')
 const katex = require('katex')
 const ejs = require('ejs')
 const fs = require('fs')
+
+const loadLanguages = require('prismjs/components/')
+loadLanguages(['julia'])
 
 function slugify(str) {
   return str
     .trim()
     .toLowerCase()
     .replace(/ /g, '-')
-    .replace(/[()[\]\s]/g, '')
+    .replace(/[^\w-]/g, '')
 }
 
 function addToc($) {
@@ -134,6 +138,16 @@ function replaceShorthandLinks(html) {
     .replace(bracketRegex, (_, g1) => `<a href="#definition-${slugify(g1)}">${g1}</a>`)
 }
 
+function highlightCode($) {
+  $('raw').each((i, el) => {
+    const $el = $(el)
+    const lang = $el.attr('lang') || ''
+    let code = $el.html()
+    if (lang) code = Prism.highlight(code, Prism.languages[lang], lang)
+    $el.replaceWith(`<pre class="language-${lang}"><code>${code.trim()}</code></pre>`)
+  })
+}
+
 function build() {
   const partialFiles = [
     'index',
@@ -144,7 +158,9 @@ function build() {
     'graph-theory',
     'analysis',
     'topology',
-    'differential-geometry'
+    'differential-geometry',
+    'lie-theory',
+    'machine-learning',
   ]
   let output = partialFiles
     .map(partialFile => fs.readFileSync(`${__dirname}/content/${partialFile}.html`, 'utf8'))
@@ -160,6 +176,7 @@ function build() {
   addIdToHeadings($)
   addToc($)
   highlightBrokenLinks($)
+  highlightCode($)
 
   output = $('body').html()
 

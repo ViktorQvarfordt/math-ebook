@@ -14,24 +14,6 @@
     A [binary operation] $*$ on a [set] $A$ is such that
     $$\forall a, b, c \in A \, (a*(b*c) = (a*b)*c).$$
   </p>
-  <intuition>
-    <p>
-      The operations addition and multiplication on $\mathbb{R}$ are associative. However, subtraction an division are not associative.
-    </p>
-    <example title="Subtraction is not associative">
-      <p>
-        Let $* : \mathbb{R} \times \mathbb{R} \to \mathbb{R}, (a, b) \mapsto a - b$. Let $c \neq 0$, then
-        $$
-        \begin{aligned}
-          a*(b*c) &= a - (b - c) \\
-          &= a - b + c \\
-          &\ne (a - b) - c \\
-          &= (a*b)*c.
-        \end{aligned}
-        $$
-      </p>
-    </example>
-  </intuition>
 </definition>
 
 <definition title="Commutative">
@@ -40,6 +22,24 @@
     $$\forall a, b \in A \, (a*b = b*a).$$
   </p>
 </definition>
+
+<example>
+  <p>
+    The operations addition and multiplication on $\mathbb{R}$ are associative and commutative. However, subtraction and division are neither.
+  </p>
+  <raw lang="julia">
+⋆ = (a, b) -> a - b
+a, b, c = 1, 2, 3
+println("test of associativity: ", (a ⋆ (b ⋆ c), (a ⋆ b) ⋆ c))
+println("test of commutativity: ", (a ⋆ b, b ⋆ a))
+  </raw>
+  Outputs:
+  <raw>
+test of associativity: (2, -4)
+test of commutativity: (-1, 1)
+  </raw>
+</example>
+
 
 <definition title="Identity element">
   <p>
@@ -303,41 +303,6 @@
     It follows that if $x_j = x_k$ for $j \ne k$ then $f(x_1, \ldots, x_j, \ldots, x_k, \ldots, x_n) = 0$.
   </p>
 </definition>
-
-
-
-<h2>Lie algebra</h2>
-
-<intuition>
-  <p>
-    TODO
-  </p>
-</intuition>
-
-<definition title="Jacobi identity">
-  <p>
-    Let $+$ be a [closed](closure) [binary operation] on a [set] $A$ with [identity element] $0$. Let $\times$ be a <a href="#definition-closure">closed</a> [binary operation] on $A$. The <strong>Jacobi identity</strong> is the property of $\times$ such that
-    $$\forall a, b, c \in A \big( a \times (b \times c) + b \times (c \times a) + c \times (a \times b) = 0\big).$$
-  </p>
-  <remark>
-    <p>
-      This can be seen as a weaker form of [associativity], since if $\times$ is associative then the Jacobi identity holds.
-    </p>
-  </remark>
-</definition>
-
-<definition title="Lie algebra">
-  <p>
-    A <strong>Lie algebra</strong> is a [vector space] $\mathfrak {g}$ equipped with an [alternating] [bilinear] [function] $\mathfrak {g}\times \mathfrak {g} \to \mathfrak {g}; (x,y) \mapsto [x,y]$ called the Lie bracket that satisfies the [Jacobi identity].
-  </p>
-</definition>
-
-<definition title="Lie group">
-  <p>
-    A <strong>Lie group</strong> is a <a href="#definition-group">group</a> $(G, m, i)$ such that $G$ is a [smooth manifold] and group multiplication $m$ and group inversion $i$ are [smooth functions](smooth function).
-  </p>
-</definition>
-
 
 
 

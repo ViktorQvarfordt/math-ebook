@@ -1,0 +1,16 @@
+<h1>Machine learning</h1>
+
+<h2>Time series analysis</h2>
+
+<p>
+  Let $(x_t)_t$ be a time series. The target output at time $t$ is then $y_t = x_{t+1}$. Let $\hat{y}_t$ be the output of the network, given $x_k$ for $k \le t$. Define $e_t = y_t - \hat{y}_t$ as the prediction error. Then, we define the mean and standard deviation of the last $n$ timesteps,
+  $$\begin{aligned}
+    \mu_{t,n} &= \frac{\sum_{k = t - n}^t e_k}{n} \\
+    \sigma_{t,n}^2 &= \frac{\sum_{k = t - n}^t (e_k - \mu_{t,n})^2}{n-1}
+  \end{aligned}$$
+  Next, let $m \lt n$, then we define the <strong>anomaly likelihood</strong> as
+  $$L_t = \Phi\left(\frac{\mu_{t,m} - \mu_{t,n}}{\sigma_{t,n}}\right)$$
+  where $\Phi$ is the cumulative distribution function of the normal distribution.
+  In this way we have, for given threshold $\varepsilon > 0$, that
+  $$P(\text{anomaly detected}_{t, \varepsilon}) \coloneqq L_t \ge 1 - \varepsilon.$$
+</p>
