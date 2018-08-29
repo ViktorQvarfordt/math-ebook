@@ -233,6 +233,7 @@ test of commutativity: (-1, 1)
   </p>
 </definition>
 
+
 <p>
   The novice reader will be confused by the above, therefore we give a self-contained description of the prototypical vector space, the <em>real vector space</em> $ℝ^n$.
 </p>
@@ -257,6 +258,47 @@ test of commutativity: (-1, 1)
   <p>
     As an exercise, check that the this indeed is a vector space according to the abstract definition.
   </p>
+
+  <p>
+    <strong>Implementation of $ℝ^3$ in Julia:</strong>
+  </p>
+
+  <raw lang="julia">
+import Base.+
+import Base.*
+
+Scalar = Number
+
+# Define a type to represent 3-dimensional vectors
+struct Vec3d
+    x::Scalar
+    y::Scalar
+    z::Scalar
+end
+
+# Define vector addition
+function +(u::Vec3d, v::Vec3d)::Vec3d
+    return Vec3d(u.x + v.x, u.y + v.y, u.z + v.z)
+end
+
+# Define scalar multiplication
+function *(k::Scalar, v::Vec3d)
+    return Vec3d(k * v.x, k * v.y, k * v.z)
+end
+
+u = Vec3d(1, 2, 3)
+v = Vec3d(1, 1, 1)
+
+k = 5
+
+println("test of vector addition: ", u + v)
+println("test of scalar multiplication: ", k * u)
+ </raw>
+
+  <raw>
+test of vector addition: Vec3d(2, 3, 4)
+test of scalar multiplication: Vec3d(5, 10, 15)
+  </raw>
 </example>
 
 <definition title="Homomorphism">
