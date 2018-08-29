@@ -37,19 +37,6 @@
   </p>
 </definition>
 
-<definition title="Set builder notation">
-  <p>
-    The <em>set builder notation</em> is a notational convenience for constructing new sets. Given a set $A$ we define the expression
-    $$\{f(a) : a \in A \}$$
-    to mean the set of elements on the form $f(a)$ for all elements $a \in A$, where $f$ is some way of constructing a new element from a given element. This notion is later formalized as a <a href="#definition-function">function</a>. The colon in the set builder notation is read <em>such that</em>. We read the above defined set as “the set of all elements on the form $f(a)$ such that $a \in A$”.
-  </p>
-  <p>
-    The set builder notation is naturally extended to multiple sets, we write
-    $$\{f(a_1, a_2, \ldots, a_n) : a_1 \in A_1, a_2 \in A_2, \ldots a_n \in A_n \}$$
-    to mean the set of elements on the form $f(a_1, a_2, \ldots, a_n)$ for all combinations of $a_1 \in A_1, a_2 \in A_2, \ldots a_n \in A_n.$
-  </p>
-</definition>
-
 <definition title="Tuple">
   <p>
     A <em>tuple</em> is an ordered list of elements. An <em>$n$-tuple</em> is a tuple of $n$ elements.
@@ -68,11 +55,14 @@
 
 <definition title="Cartesian product">
   <p>
-    The cartesian product of two sets $A$ and $B$ is given by
+    The <strong>cartesian product</strong> of two sets $A$ and $B$ is the set of all tuples $(a, b)$ for all combinations of $a \in A$ and $b \in B$.
+  </p>
+  <p>
+    In [set builder notation] we write this as
     $$A × B \coloneqq \{(a,b) : a \in A, b \in B\}.$$
   </p>
   <p>
-    We write $A^k$ to denote a cartesian product of $k$ copies of $A$, $A \times A \times \cdots \times A$.
+    We write $A^k$ to denote a cartesian product of $k$ copies of $A$, $A \times A \times \cdots \times A$, of which the elements are on the form $(a_1, a_2, \ldots, a_k)$.
   </p>
   <intuition>
     <example>
@@ -273,6 +263,19 @@
     </p>
   </proof>
 </observation>
+
+<definition title="Set builder notation">
+  <p>
+    The <em>set builder notation</em> is a notational convenience for constructing new sets. Given a set $A$ and a function $f$ with domain $A$ we define the expression
+    $$\{f(a) : a \in A \}$$
+    to be the set of elements $f(a)$ for all elements $a \in A$. The colon in the set builder notation is read <em>such that</em>. We read the above defined set as “the set of all elements on the form $f(a)$ such that $a \in A$”.
+  </p>
+  <p>
+    The set builder notation is naturally extended to multiple sets, we write
+    $$\{f(a_1, a_2, \ldots, a_n) : a_1 \in A_1, a_2 \in A_2, \ldots a_n \in A_n \}$$
+    to mean the set of elements on the form $f(a_1, a_2, \ldots, a_n)$ for all combinations of $a_1 \in A_1, a_2 \in A_2, \ldots a_n \in A_n.$
+  </p>
+</definition>
 
 <definition title="Set of functions">
   <p>

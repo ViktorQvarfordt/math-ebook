@@ -8,6 +8,8 @@ const fs = require('fs')
 const loadLanguages = require('prismjs/components/')
 loadLanguages(['julia'])
 
+const dollarSubstitute = '---dollar---'
+
 function slugify(str) {
   return str
     .trim()
@@ -144,7 +146,9 @@ function highlightCode($) {
     const lang = $el.attr('lang') || ''
     let code = $el.html()
     if (lang) code = Prism.highlight(code, Prism.languages[lang], lang)
-    $el.replaceWith(`<pre class="language-${lang}"><code>${code.trim()}</code></pre>`)
+    // Temporarily substitute dollar signs so that KaTeX wont try to parse inside code blocks.
+    code = code.trim().replace(/\$/g, dollarSubstitute)
+    $el.replaceWith(`<pre class="language-${lang}"><code>${code}</code></pre>`)
   })
 }
 
@@ -188,6 +192,7 @@ function build() {
   })
 
   output = renderKatex(output)
+  output = output.replace(new RegExp(dollarSubstitute, 'g'), '$')
 
   fs.writeFileSync(`${__dirname}/docs/index.html`, output)
 }

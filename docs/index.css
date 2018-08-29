@@ -75,18 +75,17 @@ h4:hover a {
   margin-left: -4px;
 }
 
-.block.inline {
-  border: none;
-  padding-left: 0;
-}
-
 .block.inline .meta {
   display: inline;
   margin-right: 5px;
 }
 
-.block:not(.collapsed) .meta {
-  margin-bottom: -0.5em;
+.block .meta {
+  margin: 7px 0;
+}
+
+.block .meta + p {
+  margin-top: 7px;
 }
 
 .content {
