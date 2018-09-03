@@ -335,6 +335,60 @@ println(isgroup(get_mult_group(5)...))
 </definition>
 
 
+
+<definition title="Homomorphism">
+  <p>
+    A <em>homomorphism</em> between two algebraic structures is a map between the algebraic structures that preserves the structure.
+  </p>
+</definition>
+
+<definition title="Isomorphism">
+  <p>
+    An <em>isomorphism</em> is a [homomorphism] whose <a href="#definition-inverse-function">inverse</a> is a [homomorphism].
+  </p>
+</definition>
+
+<definition title="Module homomorphism" tag="definition-module-homomorphism definition-linear-function">
+  <p>
+    Let $(M,R,+_M,\cdot_M)$ and $(N,R,+_N,\cdot_N)$ be <a href="#definition-module">modules</a> and let $f : M \to N$, then $f$ is a <em>module homomorphism</em> if $\forall x, y \in M, r \in R$:
+  </p>
+  <ul class="inline">
+    <li>$f(x +_M y) = f(x) +_N f(y)$</li>
+    <li>$f(r \cdot_M x) = r \cdot_N f(x)$</li>
+  </ul>
+  <p>
+    Module homomorphisms are often (in particular in linear algebra) called <em>linear functions</em>.
+  </p>
+</definition>
+
+<definition title="Multilinear" tag="definition-multilinear definition-bilinear definition-multilinear-form definition-bilinear-form">
+  <p>
+    Let $(M_k,R,+_{M_k},\cdot_{M_k}), 1 \le k \le n$ and $(N,R,+_N,\cdot_N)$ be [modules](module) and let $f : \prod_{k=1}^n M_k \to N$, then $f$ is a <em>multilinear function</em> if $f$ restricted to $M_k$ is a [module homomorphism] for $1 \le k \le n$.
+  </p>
+  <p>
+    If $f$ is multilinear with $n = 2$ we say that $f$ is <strong>bilinear</strong>.
+  </p>
+  <p>
+    If $f$ is multilinear with $M_j = M_k$ for all $i \le j, k \le n$ we say that $f$ is a <strong>multilinear form</strong>.
+  </p>
+</definition>
+
+<definition title="Alternating">
+  <p>
+    Let $f : M^n \to N$ be a [multilinear form], then $f$ is <strong>alternating</strong> if it satisfies
+    $$\forall x_1, \ldots, x_n \in M,\, \forall j \ne k \; \big( f(x_1, \ldots, x_j, \ldots, x_k, \ldots, x_n) = - f(x_1, \ldots, x_k, \ldots, x_j, \ldots, x_n \big).$$
+    It follows that if $x_j = x_k$ for $j \ne k$ then $f(x_1, \ldots, x_j, \ldots, x_k, \ldots, x_n) = 0$.
+  </p>
+</definition>
+
+
+
+
+
+<h2>Linear algebra</h2>
+
+<p>Linear algebra should be thought of as a subarea of abstract algebra. Linear algebra primarily deals with the real vector space $\mathbb{R}^n$.</p>
+
 <p>
   The novice reader will be confused by the above, therefore we give a self-contained description of the prototypical vector space, the <em>real vector space</em> $ℝ^n$.
 </p>
@@ -402,51 +456,7 @@ test of scalar multiplication: Vec3d(5, 10, 15)
   </raw>
 </example>
 
-<definition title="Homomorphism">
-  <p>
-    A <em>homomorphism</em> between two algebraic structures is a map between the algebraic structures that preserves the structure.
-  </p>
-</definition>
-
-<definition title="Isomorphism">
-  <p>
-    An <em>isomorphism</em> is a [homomorphism] whose <a href="#definition-inverse-function">inverse</a> is a [homomorphism].
-  </p>
-</definition>
-
-<definition title="Module homomorphism" tag="definition-module-homomorphism definition-linear-function">
-  <p>
-    Let $(M,R,+_M,\cdot_M)$ and $(N,R,+_N,\cdot_N)$ be <a href="#definition-module">modules</a> and let $f : M \to N$, then $f$ is a <em>module homomorphism</em> if $\forall x, y \in M, r \in R$:
-  </p>
-  <ul class="inline">
-    <li>$f(x +_M y) = f(x) +_N f(y)$</li>
-    <li>$f(r \cdot_M x) = r \cdot_N f(x)$</li>
-  </ul>
-  <p>
-    Module homomorphisms are often (in particular in linear algebra) called <em>linear functions</em>.
-  </p>
-</definition>
-
-<definition title="Multilinear" tag="definition-multilinear definition-bilinear definition-multilinear-form definition-bilinear-form">
-  <p>
-    Let $(M_k,R,+_{M_k},\cdot_{M_k}), 1 \le k \le n$ and $(N,R,+_N,\cdot_N)$ be [modules](module) and let $f : \prod_{k=1}^n M_k \to N$, then $f$ is a <em>multilinear function</em> if $f$ restricted to $M_k$ is a [module homomorphism] for $1 \le k \le n$.
-  </p>
-  <p>
-    If $f$ is multilinear with $n = 2$ we say that $f$ is <strong>bilinear</strong>.
-  </p>
-  <p>
-    If $f$ is multilinear with $M_j = M_k$ for all $i \le j, k \le n$ we say that $f$ is a <strong>multilinear form</strong>.
-  </p>
-</definition>
-
-<definition title="Alternating">
-  <p>
-    Let $f : M^n \to N$ be a [multilinear form], then $f$ is <strong>alternating</strong> if it satisfies
-    $$\forall x_1, \ldots, x_n \in M,\, \forall j \ne k \; \big( f(x_1, \ldots, x_j, \ldots, x_k, \ldots, x_n) = - f(x_1, \ldots, x_k, \ldots, x_j, \ldots, x_n \big).$$
-    It follows that if $x_j = x_k$ for $j \ne k$ then $f(x_1, \ldots, x_j, \ldots, x_k, \ldots, x_n) = 0$.
-  </p>
-</definition>
-
+<p>TODO: https://www.math.usm.edu/perry/old_classes/mat681sp14/norm_and_metric.pdf</p>
 
 
 <h2>Clifford algebra</h2>
