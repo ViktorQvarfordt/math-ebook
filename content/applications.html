@@ -14,3 +14,42 @@
   In this way we have, for given threshold $\varepsilon > 0$, that
   $$P(\text{anomaly detected}_{t, \varepsilon}) \coloneqq L_t \ge 1 - \varepsilon.$$
 </p>
+
+
+<h2>Optimal stopping</h2>
+
+https://en.wikipedia.org/wiki/Secretary_problem
+
+<h3>No information games</h3>
+
+<raw>
+    0% rejection -> 37%
+50/50% rejection -> 25%
+</raw>
+
+<h3>Full information games</h3>
+
+<p>
+  Threshold rule.
+</p>
+
+<p>
+  58% chance of picking the best.
+</p>
+
+<p>
+  Let there be $n$ candidates. Pick the $k$:th candidate if $s_k > ???$
+</p>
+
+<raw>
+k = n   : pick (no option)
+k = n-1 : pick if s > 0.5
+k = n-2 : pick if s > 0.69
+k = n-3 : pick if s > 0.78
+</raw>
+
+<h3>Selling a house</h3>
+
+<p>
+  Similar to full information. The goal is not to get the best candidate, but get the most money. Assuming delaying the sale has a cost.
+</p>
