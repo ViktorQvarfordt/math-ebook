@@ -1,9 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Merriweather:400,400i,700,700i');
 
 :root {
-  --content-width: 600px;
-  --margin-width: 200px;
-  --spacing: 22px;
   --color-definition: #4086f4;
   --color-intuition: #31a952;
   --color-proof: #f9bc00;
@@ -14,6 +11,7 @@ body {
   font-family: 'Merriweather', serif;
   font-size: 14px;
   margin: 8px;
+  line-height: 1.75;
 }
 
 h1.title {
@@ -89,7 +87,7 @@ h4:hover a {
 }
 
 .content {
-  max-width: 700px;
+  max-width: 800px;
   margin-left: auto;
   margin-right: auto;
 }
