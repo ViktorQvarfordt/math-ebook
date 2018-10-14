@@ -12,6 +12,10 @@ body {
   font-size: 14px;
   margin: 8px;
   line-height: 1.75;
+
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
 }
 
 h1.title {
@@ -134,4 +138,9 @@ h4:hover a {
 
 .block .meta a {
   color: inherit;
+}
+
+/* Allow line-breaks also in display style. */
+.katex-display > .katex {
+  white-space: normal;
 }

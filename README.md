@@ -1,6 +1,6 @@
 # Math e-book
 
-Read [here](http://math.viktorqvarfordt.com/).
+Go to book: [math.viktorqvarfordt.com](http://math.viktorqvarfordt.com/).
 
 
 ## Update content
@@ -23,3 +23,14 @@ Note that:
 ## Markup language
 
 The markup language that is used is HTML with some trickery: I have created custom html tags and a short-hand syntax for referencing existing definitions (`[foo]` is transformed into `<a href="#definition-foo">foo</a>`). The math is typeset with KaTeX.
+
+
+## Responsive math
+
+With the css below KaTeX allows line-breaks also in display style. However, note that this does not work in any math environment like `aligned` or `gathered`. It is a good idea to use `\allowbreak` where you prefer to have line breaks.
+
+```css
+.katex-display > .katex {
+  white-space: normal;
+}
+```
