@@ -392,13 +392,12 @@ println(isgroup(get_mult_group(5)...))
 
 <h2>Linear algebra</h2>
 
-<p>Linear algebra should be thought of as a subarea of abstract algebra. Linear algebra primarily deals with the real vector space $\mathbb{R}^n$.</p>
-
-<p>
-  The novice reader will be confused by the above, therefore we give a self-contained description of the prototypical vector space, the <em>real vector space</em> $ℝ^n$.
-</p>
+<p>Linear algebra can be thought of as a subarea of abstract algebra, dealing with vector spaces, primarily deals the real vector space $\mathbb{R}^n$.</p>
 
 <example title="The real vector space $ℝ^n$" tag="example-real-vector-space">
+  <p>
+    A self-contained description of the prototypical vector space, the <em>real vector space</em> $ℝ^n$.
+  </p>
   <p>
     Consider the $n$-fold cartesian product $ℝ^n$ of the real numbers $ℝ$. The points in $ℝ^n$ are called <em>vectors</em>. Vector addition is given by component-wise addition; if $x, y \in ℝ^n$ then
     $$
@@ -460,6 +459,51 @@ test of vector addition: Vec3d(2, 3, 4)
 test of scalar multiplication: Vec3d(5, 10, 15)
   </raw>
 </example>
+
+<definition title="Scalar product">
+  <p>
+    Let $u, v \in \mathbb{R}^n$, the <em>scalar product</em> of $u$ and $v$ is given by
+    $$ u \cdot v = \sum_{k=1}^n u_k v_k. $$
+  </p>
+</definition>
+
+<observation title="Inner product and geometry">
+  <p>
+    Let $u, v \in \mathbb{R}^n$ and let $\theta$ be the angle $u$ and $v$, then
+    $$ u \cdot v = |u| |v| \cos \theta. $$
+  </p>
+  <proof>
+    <p>
+      Using the [law of cosines] and then expanding resulting expression proves the theorem.
+      $$\begin{aligned}
+        |u - v|^2 &= |u|^2 + |v|^2 + 2|u||v|\cos \theta \\
+        \iff |u||v|\cos \theta &= \frac{1}{2}\left(|u|^2 + |v|^2 - |u - v|^2 \right) \\
+        &= \frac{1}{2}\left( \sum u_k^2 + v_k^2 - (u_k - v_k)^2 \right) \\
+        &= \frac{1}{2}\left( \sum u_k^2 + v_k^2 - u_k^2 - v_k^2 + 2u_kv_k \right) \\
+        &= \sum u_kv_k \\
+        &= u \cdot v
+      \end{aligned}$$
+    </p>
+  </proof>
+  <p>
+    Note that this result depends on the [law of cosines], i.e. requiring that the space has a corresponding Euclidean geometry in which notions of distances and angles are defined. However, in the general setting of a vector space with an inner product, this result can be used to <em>define</em> the notion of angles.
+  </p>
+  <p>
+    In this sense an inner product defines a geometry of a vector space, endowing it with the notion of distances and angles by defining
+    $$\begin{aligned}
+      |u| &= \sqrt{\langle u, u \rangle} \\
+      \angle(u, v) &= \arccos\left( \frac{\langle u, v \rangle}{|u| |v|} \right)
+    \end{aligned}$$
+    for vectors $u$ and $v$ where $|u|$ denotes the length (distance) of $u$ and $\angle(u, v)$ denotes the angle between $u$ and $v$.
+  </p>
+</observation>
+
+<definition title="Inner product">
+  <p>
+    The inner product generalizes the scalar product.
+  </p>
+</definition>
+
 
 <p>TODO: https://www.math.usm.edu/perry/old_classes/mat681sp14/norm_and_metric.pdf</p>
 

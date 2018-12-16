@@ -10,7 +10,7 @@ loadLanguages(['julia'])
 
 const dollarSubstitute = '---dollar---'
 
-function slugify(str) {
+function slugify (str) {
   return str
     .trim()
     .toLowerCase()
@@ -18,7 +18,7 @@ function slugify(str) {
     .replace(/[^\w-]/g, '')
 }
 
-function addToc($) {
+function addToc ($) {
   const $toc = $('toc')
   const toc = $toc.get(0)
   if (!toc) return
@@ -46,7 +46,7 @@ function addToc($) {
   toc.tagName = 'div'
 }
 
-function highlightBrokenLinks($) {
+function highlightBrokenLinks ($) {
   $('a').each((i, el) => {
     const $el = $(el)
     const href = $el.attr('href')
@@ -57,7 +57,7 @@ function highlightBrokenLinks($) {
   })
 }
 
-function processBlocks($) {
+function processBlocks ($) {
   const envs = [
     'definition',
     'observation',
@@ -88,7 +88,7 @@ function processBlocks($) {
       $el.removeAttr('title')
       $el.removeAttr('tag')
 
-      const inline = typeof $el.attr('inline') === 'undefined' ? false : true
+      const inline = typeof $el.attr('inline') !== 'undefined'
       if (inline) {
         $el.addClass('inline')
         $el.removeAttr('inline')
@@ -107,7 +107,7 @@ function processBlocks($) {
   }
 }
 
-function addIdToHeadings($) {
+function addIdToHeadings ($) {
   $('h1:not(.title), h2, h3, h4').each((i, el) => {
     const $el = $(el)
     let id = $el.attr('id')
@@ -119,8 +119,8 @@ function addIdToHeadings($) {
   })
 }
 
-function renderKatex(html) {
-  function render(tex, displayMode) {
+function renderKatex (html) {
+  function render (tex, displayMode) {
     return katex.renderToString(tex, {
       displayMode,
       throwOnError: false
@@ -132,7 +132,7 @@ function renderKatex(html) {
     .replace(/\$((?:\\\$|[^$])+)\$/g, (_, g1) => render(g1, false))
 }
 
-function replaceShorthandLinks(html) {
+function replaceShorthandLinks (html) {
   const bracketParenRegex = /\[(\w[\w\s]*\w)\]\((\w[\w\s]*\w)\)/g // [..](..)
   const bracketRegex = /\[(\w[\w\s]*\w)\]/g // [..]
   return html
@@ -140,7 +140,7 @@ function replaceShorthandLinks(html) {
     .replace(bracketRegex, (_, g1) => `<a href="#definition-${slugify(g1)}">${g1}</a>`)
 }
 
-function highlightCode($) {
+function highlightCode ($) {
   $('raw').each((i, el) => {
     const $el = $(el)
     const lang = $el.attr('lang') || ''
@@ -152,7 +152,7 @@ function highlightCode($) {
   })
 }
 
-function build() {
+function build () {
   const partialFiles = [
     'index',
     'set-theory',
@@ -165,6 +165,7 @@ function build() {
     'differential-geometry',
     'lie-theory',
     'applications',
+    'reinforcement-learning'
   ]
   let output = partialFiles
     .map(partialFile => fs.readFileSync(`${__dirname}/content/${partialFile}.html`, 'utf8'))
@@ -197,7 +198,7 @@ function build() {
   fs.writeFileSync(`${__dirname}/docs/index.html`, output)
 }
 
-function buildWrapper() {
+function buildWrapper () {
   const t0 = Date.now()
   build()
   const t1 = Date.now()
