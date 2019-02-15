@@ -165,7 +165,8 @@ function build () {
     'differential-geometry',
     'lie-theory',
     'applications',
-    'reinforcement-learning'
+    'reinforcement-learning',
+    'misc'
   ]
   let output = partialFiles
     .map(partialFile => fs.readFileSync(`${__dirname}/content/${partialFile}.html`, 'utf8'))
