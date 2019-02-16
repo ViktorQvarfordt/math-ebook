@@ -504,8 +504,177 @@ test of scalar multiplication: Vec3d(5, 10, 15)
   </p>
 </definition>
 
-
 <p>TODO: https://www.math.usm.edu/perry/old_classes/mat681sp14/norm_and_metric.pdf</p>
+
+<definition title="Linear combination">
+  <p>
+    A linear combination of the vectors $v_1, \ldots, v_n$ is an expression on the form
+    $$\sum_{k=1}^n a_k v_k$$
+    where $a_k \in \text{field}(V)$.
+  </p>
+</definition>
+
+<definition title="Linear dependence">
+  <p>
+    The vectors $v_1, \ldots, v_n$ are said to be linearly dependent if
+    $$\sum_{k=1}^n a_k v_k = 0$$
+    for scalars $a_k$, not all zero.
+  </p>
+  <intuition>
+    Equivalent to that one of the vectors is a linear combination of the others.
+  </intuition>
+</definition>
+
+<definition title="Span">
+  <p>
+    Let $v_1, \ldots, v_n$ be vectors of a vector space $V$. The span of the vectors is the set of all linear combinations of the vectors,
+    $$\text{span}\{v_1, \ldots, v_n\} = \left\{\sum_{k=1}^n a_k v_k : a_k \in \text{field}(V)\right\}.$$
+  </p>
+  <p>
+    If $\text{span}\{v_1, \ldots, v_n\} = V$ we say that the vectors span $V$ or that the vectors form a spanning set.
+  </p>
+</definition>
+
+<definition title="Basis">
+  <p>
+    A set of vectors $\{v_1, \ldots, v_n\}$ of a vector space $V$ is a basis for $V$ if the vectors are linearly independent and $\text{span}\{v_1, \ldots, v_n\} =  V$.
+  </p>
+</definition>
+
+
+<definition title="Linear map">
+  <p>
+    A linear map is a module homomorphism between two vector spaces.
+  </p>
+</definition>
+
+<h3>Change of basis</h3>
+
+<p>
+  Let $\alpha = \{\alpha_j\}_{j=1}^n$ and $\beta = \{\beta_j\}_{j=1}^n$ be two bases for $V$ with coordinate maps
+  $$
+  \begin{aligned}
+    \varphi_1 &: \mathbb{R}^n \to V; \; e_j \mapsto \alpha_j \\
+    \varphi_2 &: \mathbb{R}^n \to V; \; e_j \mapsto \beta_j
+  \end{aligned}
+  $$
+  where $\{e_j\}_{j=1}^n$ is the standard basis for $\mathbb{R}^n$.
+</p>
+
+
+<h4>Change of basis for vectors</h4>
+
+<p>
+  A vector $\xi \in V$ has coordinates $\varphi_1^{-1}(\xi)$ in basis $\alpha$ and $\varphi_2^{-1}(\xi)$ in basis $\beta$.
+  Thus we have
+  $$
+  \begin{aligned}
+    \varphi_2^{-1}(\xi) = (\varphi_2^{-1} \varphi_1) \varphi_1^{-1}(\xi).
+  \end{aligned}
+  $$
+  From this, define the <strong>change of basis matrix</strong>
+  $$
+  \begin{aligned}
+    P^{-1} = \varphi_2^{-1} \varphi_1,
+  \end{aligned}
+  $$
+  i.e. the matrix that takes a vector in $\alpha$-coordinates and gives the $\beta$-coordinate representation.
+  The matrix $P = \varphi_1^{-1} \varphi_2$ is easily computed by the following observation,
+  $$
+  \begin{aligned}
+    P(e_j) = \varphi_1^{-1} \varphi_2 (e_j) = \varphi_1^{-1} (\beta_j),
+  \end{aligned}
+  $$
+  i.e. the $j$:th column of $P$ is the coordinates for the new basis vector $\beta_j$ in the old basis $\alpha$.
+</p>
+
+
+<h4>Change of basis for matrices</h4>
+
+<p>
+  Let $T : V \to V$ be a linear transformation from $V$ to itself (i.e. $T$ is an endomorphism).
+  The matrix representation for $T$ in the two coordinates are
+  $$
+  \begin{aligned}
+    &T_\alpha = \varphi_1^{-1} T \varphi_1, \\
+    &T_\beta  = \varphi_2^{-1} T \varphi_2.
+  \end{aligned}
+  $$
+  With $P^{-1}$ as above, we have
+  $$
+  \begin{aligned}
+    T_\beta = P^{-1} T_\alpha P.
+  \end{aligned}
+  $$
+</p>
+
+
+<h4>Remark</h4>
+
+<p>
+  The similarity transform $SAS^{-1}$ can be viewed as follows: You give it a coordinate vector in terms of the basis $\beta$ made up of the columns of $S^{-1} = P$. Then $S^{-1}$ translates this into the standard basis; then you apply $A$ as usual; then you apply $S$ and translate it back into the basis $\beta$. So you can view $SAS^{-1}$ as performing $A$, but in terms of the basis $\beta$.
+</p>
+
+
+<h4>Dirac notation</h4>
+
+<p>
+  Let $\{e_j\}_j$ and $\{f_j\}_j$ be two orthonormal bases. We thus have two resolutions of the identity,
+  $$
+    I =
+    \sum_j \vert e_j \rangle\langle e_j \vert =
+    \sum_j \vert f_j \rangle\langle f_j \vert.
+  $$
+</p>
+
+<h5>Vectors</h5>
+
+<p>
+  A vector $\vert\psi\rangle$ can be expanded in either basis
+  $$
+    \vert\psi\rangle =
+    \sum_j \vert e_j \rangle\langle e_j \vert\psi\rangle =
+    \sum_j \vert f_j \rangle\langle f_j \vert\psi\rangle.
+  $$
+  The components are related by
+  $$
+  \begin{aligned}
+    \langle e_j \vert \psi \rangle &= \sum_k \langle e_j \vert f_k \rangle \langle f_k \vert \psi \rangle \\
+    \iff \psi^e_j                  &= \sum_k S_{jk} \psi^f_k \\
+    \iff \psi^e                    &= S \psi^f
+  \end{aligned}
+  $$
+  where $S$ is the matrix with elements $S_{jk} = \langle e_j \vert f_k \rangle$.
+</p>
+
+<h5>Matrices</h5>
+
+<p>
+  A matrix $A$ can be expanded in either basis
+  $$
+  A = \sum_{j,k} \vert e_j \rangle \langle e_j \vert A \vert e_k \rangle \langle e_k \vert
+    = \sum_{j,k} \vert f_j \rangle \langle f_j \vert A \vert f_k \rangle \langle f_k \vert
+  $$
+  The components are related by
+  $$
+  \begin{aligned}
+    \langle e_j \vert A \vert e_k \rangle &= \sum_{p,q} \langle e_j \vert f_p \rangle \langle f_p \vert A \vert f_q \rangle \langle f_q \vert e_k \rangle \\
+    \iff A^e_{jk} &= \sum_{p,q} S_{jp} A^f_{pq} S^{-1}_{qk} \\
+    \iff A^e &= S A^f S^{-1}
+  \end{aligned}
+  $$
+  Where
+  $$
+    \left(SS^{-1}\right)_{jk} =
+    \sum_m S_{jm} S^{-1}_{mk} =
+    \sum_m \langle e_j \vert f_m \rangle \langle f_m \vert e_k \rangle =
+    \langle e_j \vert e_k \rangle =
+    \delta_{jk}
+  $$
+  shows that $S^{-1}$ indeed is the inverse of $S$.
+</p>
+
+
 
 
 <h2>Clifford algebra</h2>
