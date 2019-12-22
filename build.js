@@ -157,6 +157,7 @@ function build () {
     'index',
     'set-theory',
     'abstract-algebra',
+    'category-theory',
     'arithmetic',
     'information-theory',
     'graph-theory',
